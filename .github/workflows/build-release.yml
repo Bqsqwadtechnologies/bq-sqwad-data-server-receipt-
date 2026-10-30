@@ -19,15 +19,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle 8.9
+      - name: Install Gradle 9.0.0
         shell: bash
         run: |
           set -euo pipefail
           curl --fail --location --retry 3 --retry-delay 2 \
-            https://services.gradle.org/distributions/gradle-8.9-bin.zip \
-            --output "$RUNNER_TEMP/gradle-8.9-bin.zip"
-          unzip -q "$RUNNER_TEMP/gradle-8.9-bin.zip" -d "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/gradle-8.9/bin" >> "$GITHUB_PATH"
+            https://services.gradle.org/distributions/gradle-9.0.0-bin.zip \
+            --output "$RUNNER_TEMP/gradle-9.0.0-bin.zip"
+          unzip -q "$RUNNER_TEMP/gradle-9.0.0-bin.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-9.0.0/bin" >> "$GITHUB_PATH"
           gradle --version
 
       - name: Decode keystore
@@ -49,7 +49,7 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: gradle --no-daemon bundleRelease assembleRelease --stacktrace
+        run: gradle --no-daemon --warning-mode=all bundleRelease assembleRelease --stacktrace
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
