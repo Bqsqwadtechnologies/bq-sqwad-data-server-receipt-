@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
 
       # This repository does not contain the Gradle Wrapper. Install the
-      # Gradle version required by AGP 8.7.3 instead of invoking the missing Gradle Wrapper.
+      # requested Gradle 9.0.0 instead of invoking the missing Gradle Wrapper.
       - name: Install Gradle 9.0.0
         shell: bash
         run: |
