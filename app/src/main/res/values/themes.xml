@@ -4,10 +4,14 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">@color/sky_primary</item>
+        <item name="colorPrimaryDark">@color/sky_primary_dark</item>
+        <item name="colorAccent">@color/sky_primary</item>
     </style>
+
     <style name="Theme.BQSqwadDataReceipt.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#2AA9F5</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenBackground">@color/sky_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="postSplashScreenTheme">@style/Theme.BQSqwadDataReceipt</item>
     </style>
 </resources>
