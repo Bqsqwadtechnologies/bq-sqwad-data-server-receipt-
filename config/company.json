@@ -1,0 +1,53 @@
+{
+  "legalName": "BQ Sqwad Technologies",
+  "brandName": "BQ Sqwad",
+  "tagline": "See what your data really costs.",
+  "address": "",
+  "email": "",
+  "phone": "",
+  "registrationNumber": "",
+  "websiteApps": "",
+  "websiteContent": "",
+  "legalBaseUrl": "https://bqsqwadtechnologies.github.io/bq-sqwad-data-server-receipt-/",
+  "privacyUrl": "https://bqsqwadtechnologies.github.io/bq-sqwad-data-server-receipt-/privacy.html",
+  "termsUrl": "https://bqsqwadtechnologies.github.io/bq-sqwad-data-server-receipt-/terms.html",
+  "copyrightUrl": "https://bqsqwadtechnologies.github.io/bq-sqwad-data-server-receipt-/copyright.html",
+  "social": {
+    "tiktok": "https://www.tiktok.com/@bqsqwad",
+    "youtube": "https://youtube.com/@bqsqwad",
+    "facebook": "",
+    "instagram": "",
+    "x": "",
+    "whatsapp": ""
+  },
+  "apps": [
+    {
+      "id": "bq-sqwad-ai",
+      "name": "BQ Sqwad AI",
+      "tagline": "Your AI companion",
+      "recommended": true,
+      "logo": "branding/apps/bq-sqwad-ai.png",
+      "playStoreUrl": "",
+      "packageName": "",
+      "websiteUrl": ""
+    },
+    {
+      "id": "bq-sqwad-data-saver",
+      "name": "BQ Sqwad Data Saver",
+      "tagline": "Save more data every day",
+      "recommended": true,
+      "logo": "branding/apps/bq-sqwad-data-saver.png",
+      "playStoreUrl": "",
+      "packageName": "",
+      "websiteUrl": ""
+    }
+  ],
+  "entertainment": {
+    "name": "BQ Sqwad",
+    "tagline": "Movies, shows and original content",
+    "logo": "branding/entertainment/bq-sqwad-entertainment.png",
+    "tiktok": "https://www.tiktok.com/@bqsqwad",
+    "youtube": "https://youtube.com/@bqsqwad",
+    "website": ""
+  }
+}
