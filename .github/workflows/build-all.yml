@@ -20,16 +20,16 @@ jobs:
           distribution: 'temurin'
 
       # This repository does not contain the Gradle Wrapper. Install the
-      # Gradle version required by AGP 8.7.3 instead of invoking missing ./gradlew.
-      - name: Install Gradle 8.9
+      # Gradle version required by AGP 8.7.3 instead of invoking the missing Gradle Wrapper.
+      - name: Install Gradle 9.0.0
         shell: bash
         run: |
           set -euo pipefail
           curl --fail --location --retry 3 --retry-delay 2 \
-            https://services.gradle.org/distributions/gradle-8.9-bin.zip \
-            --output "$RUNNER_TEMP/gradle-8.9-bin.zip"
-          unzip -q "$RUNNER_TEMP/gradle-8.9-bin.zip" -d "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/gradle-8.9/bin" >> "$GITHUB_PATH"
+            https://services.gradle.org/distributions/gradle-9.0.0-bin.zip \
+            --output "$RUNNER_TEMP/gradle-9.0.0-bin.zip"
+          unzip -q "$RUNNER_TEMP/gradle-9.0.0-bin.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-9.0.0/bin" >> "$GITHUB_PATH"
           gradle --version
 
       - name: Decode keystore (for release)
@@ -47,15 +47,24 @@ jobs:
           fi
 
       - name: Build Debug APK
-        run: gradle --no-daemon assembleDebug --stacktrace
+        run: gradle --no-daemon --warning-mode=all assembleDebug --stacktrace
 
       - name: Build Release APK + AAB
         env:
-          KEYSTORE_PATH: keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: gradle --no-daemon assembleRelease bundleRelease --stacktrace
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -s keystore.jks ]; then
+            export KEYSTORE_PATH="$GITHUB_WORKSPACE/keystore.jks"
+            echo "Building release artifacts with the configured keystore."
+          else
+            unset KEYSTORE_PATH
+            echo "::warning::KEYSTORE_BASE64 is not configured; building unsigned release artifacts."
+          fi
+          gradle --no-daemon --warning-mode=all assembleRelease bundleRelease --stacktrace
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
@@ -69,11 +78,11 @@ jobs:
         with:
           name: release-apk
           path: app/build/outputs/apk/release/*.apk
-          if-no-files-found: warn
+          if-no-files-found: error
 
       - name: Upload Release AAB
         uses: actions/upload-artifact@v4
         with:
           name: release-aab
           path: app/build/outputs/bundle/release/*.aab
-          if-no-files-found: warn
+          if-no-files-found: error
