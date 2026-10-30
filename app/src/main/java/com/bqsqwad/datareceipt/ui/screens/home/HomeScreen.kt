@@ -7,7 +7,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
@@ -15,9 +14,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bqsqwad.datareceipt.R
+import com.bqsqwad.datareceipt.ads.BannerAdView
+import com.bqsqwad.datareceipt.ads.BannerPlacement
 import com.bqsqwad.datareceipt.ui.components.CompanyPlate
 import com.bqsqwad.datareceipt.ui.theme.SkyPrimary
-import com.bqsqwad.datareceipt.ui.theme.SkyPrimaryDark
 import com.bqsqwad.datareceipt.ui.theme.SkyTint
 
 @Composable
@@ -118,6 +118,10 @@ fun HomeScreen() {
         }
 
         CompanyPlate()
-        Spacer(Modifier.height(80.dp)) // space for banner ad + nav
+
+        // Banner Ad (Home)
+        BannerAdView(placement = BannerPlacement.HOME)
+
+        Spacer(Modifier.height(24.dp))
     }
 }
