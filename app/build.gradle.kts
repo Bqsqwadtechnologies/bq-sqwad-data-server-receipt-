@@ -22,10 +22,16 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        // All AdMob IDs flow from gradle.properties into BuildConfig
         buildConfigField("String", "ADMOB_APP_ID", "\"${project.findProperty("ADMOB_APP_ID") ?: "ca-app-pub-3940256099942544~3347511713"}\"")
-        buildConfigField("String", "ADMOB_BANNER_ID", "\"${project.findProperty("ADMOB_BANNER_ID") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
-        buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"${project.findProperty("ADMOB_INTERSTITIAL_ID") ?: "ca-app-pub-3940256099942544/1033173712"}\"")
-        buildConfigField("String", "ADMOB_REWARDED_ID", "\"${project.findProperty("ADMOB_REWARDED_ID") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
+        buildConfigField("String", "ADMOB_BANNER_HOME", "\"${project.findProperty("ADMOB_BANNER_HOME") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
+        buildConfigField("String", "ADMOB_BANNER_APPS", "\"${project.findProperty("ADMOB_BANNER_APPS") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
+        buildConfigField("String", "ADMOB_BANNER_TOOLS", "\"${project.findProperty("ADMOB_BANNER_TOOLS") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
+        buildConfigField("String", "ADMOB_BANNER_RECEIPT", "\"${project.findProperty("ADMOB_BANNER_RECEIPT") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
+        buildConfigField("String", "ADMOB_REWARDED_LIVE_BUBBLE", "\"${project.findProperty("ADMOB_REWARDED_LIVE_BUBBLE") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
+        buildConfigField("String", "ADMOB_REWARDED_PREMIUM_RECEIPT", "\"${project.findProperty("ADMOB_REWARDED_PREMIUM_RECEIPT") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
+        buildConfigField("String", "ADMOB_REWARDED_EXTENDED_HISTORY", "\"${project.findProperty("ADMOB_REWARDED_EXTENDED_HISTORY") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
+        buildConfigField("String", "ADMOB_INTERSTITIAL_SHARE", "\"${project.findProperty("ADMOB_INTERSTITIAL_SHARE") ?: "ca-app-pub-3940256099942544/1033173712"}\"")
         buildConfigField("Boolean", "ENABLE_REMOVE_ADS", "${project.findProperty("ENABLE_REMOVE_ADS") ?: "false"}")
 
         manifestPlaceholders["admobAppId"] = project.findProperty("ADMOB_APP_ID") ?: "ca-app-pub-3940256099942544~3347511713"
@@ -37,12 +43,11 @@ android {
             if (keystorePropsFile.exists()) {
                 val props = Properties()
                 props.load(FileInputStream(keystorePropsFile))
-                storeFile = file(props["storeFile"] ?: "")
-                storePassword = props["storePassword"] as String?
-                keyAlias = props["keyAlias"] as String?
-                keyPassword = props["keyPassword"] as String?
+                storeFile = file(props["storeFile"] as String)
+                storePassword = props["storePassword"] as String
+                keyAlias = props["keyAlias"] as String
+                keyPassword = props["keyPassword"] as String
             } else {
-                // Fallback to environment variables
                 val path = System.getenv("KEYSTORE_PATH")
                 if (path != null) {
                     storeFile = file(path)
