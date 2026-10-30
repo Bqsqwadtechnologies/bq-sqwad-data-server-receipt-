@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#2AA9F5</color>
+    <color name="sky_primary">#2AA9F5</color>
+    <color name="sky_primary_dark">#0B84D6</color>
+    <color name="sky_tint">#EAF6FE</color>
+    <color name="sky_ink">#0B2540</color>
+</resources>
