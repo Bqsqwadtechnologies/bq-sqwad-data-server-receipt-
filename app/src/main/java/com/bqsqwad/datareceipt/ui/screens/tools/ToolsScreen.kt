@@ -8,10 +8,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.bqsqwad.datareceipt.ads.BannerAdView
+import com.bqsqwad.datareceipt.ads.BannerPlacement
 
 data class ToolItem(val title: String, val icon: ImageVector, val description: String)
 
@@ -28,29 +29,48 @@ fun ToolsScreen() {
         ToolItem("Travel Mode", Icons.Default.Flight, "Second currency for trips")
     )
 
-    Column(Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Tools", style = MaterialTheme.typography.headlineMedium)
-        Spacer(Modifier.height(16.dp))
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+    Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(16.dp)
         ) {
-            items(tools) { tool ->
-                Card(
-                    onClick = { /* TODO */ },
-                    modifier = Modifier.fillMaxWidth().height(140.dp)
-                ) {
-                    Column(
-                        Modifier.padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+            Text("Tools", style = MaterialTheme.typography.headlineMedium)
+            Spacer(Modifier.height(16.dp))
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.weight(1f, fill = false)
+            ) {
+                items(tools) { tool ->
+                    Card(
+                        onClick = { /* TODO: open tool + check rewarded unlock if needed */ },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(140.dp)
                     ) {
-                        Icon(tool.icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-                        Text(tool.title, style = MaterialTheme.typography.titleSmall)
-                        Text(tool.description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Column(
+                            Modifier.padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Icon(tool.icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                            Text(tool.title, style = MaterialTheme.typography.titleSmall)
+                            Text(
+                                tool.description,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
             }
         }
+
+        // Banner Ad (Tools)
+        BannerAdView(
+            placement = BannerPlacement.TOOLS,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
     }
 }

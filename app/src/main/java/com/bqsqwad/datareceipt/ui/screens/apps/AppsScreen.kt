@@ -7,25 +7,41 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.bqsqwad.datareceipt.ads.BannerAdView
+import com.bqsqwad.datareceipt.ads.BannerPlacement
 
 @Composable
 fun AppsScreen() {
-    Column(Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Apps", style = MaterialTheme.typography.headlineMedium)
-        Spacer(Modifier.height(16.dp))
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = MaterialTheme.shapes.large
+    Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(16.dp)
         ) {
-            Box(
-                modifier = Modifier.fillMaxWidth().padding(32.dp),
-                contentAlignment = Alignment.Center
+            Text("Apps", style = MaterialTheme.typography.headlineMedium)
+            Spacer(Modifier.height(16.dp))
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large
             ) {
-                Text(
-                    "Grant Usage Access permission to see which apps are costing you money.",
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        "Grant Usage Access permission to see which apps are costing you money.",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
             }
         }
+
+        // Banner Ad (Apps)
+        BannerAdView(
+            placement = BannerPlacement.APPS,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
     }
 }
