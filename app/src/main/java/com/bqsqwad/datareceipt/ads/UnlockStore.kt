@@ -20,6 +20,7 @@ class UnlockStore @Inject constructor(
     private val premiumReceiptKey = longPreferencesKey("premium_receipt_until")
     private val extendedHistoryKey = longPreferencesKey("extended_history_until")
 
+    private val SIX_HOURS = 6 * 60 * 60 * 1000L
     private val TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000L
 
     val isLiveBubbleUnlocked: Flow<Boolean> = context.unlockDataStore.data.map { prefs ->
@@ -35,7 +36,8 @@ class UnlockStore @Inject constructor(
     }
 
     suspend fun unlockLiveBubble() {
-        context.unlockDataStore.edit { it[liveBubbleKey] = System.currentTimeMillis() + TWENTY_FOUR_HOURS }
+        context.unlockDataStore.edit { it[liveBubbleKey] = System.currentTimeMillis() + SIX_HOURS }
+        com.bqsqwad.datareceipt.service.LiveBubbleReminderWorker.schedule(context)
     }
 
     suspend fun unlockPremiumReceipt() {
