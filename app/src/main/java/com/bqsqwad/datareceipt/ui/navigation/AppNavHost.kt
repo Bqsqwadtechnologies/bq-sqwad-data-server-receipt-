@@ -1,6 +1,5 @@
 package com.bqsqwad.datareceipt.ui.navigation
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -10,7 +9,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -84,7 +82,6 @@ fun AppNavHost() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Routes.ONBOARDING) { OnboardingScreen(navController) }
-
             composable(Screen.Home.route) { HomeScreen() }
             composable(Screen.Apps.route) { AppsScreen() }
             composable(Screen.Tools.route) { ToolsScreen(navController) }
@@ -101,35 +98,15 @@ fun AppNavHost() {
             composable(Routes.COUNTRY_PICKER) { CountryCurrencyScreen(navController) }
             composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) }
 
+            // All 8 tools — real screens
             composable(Routes.LIVE_BUBBLE) { LiveBubbleScreen(navController) }
             composable(Routes.CALCULATOR) { CalculatorScreen(navController) }
             composable(Routes.HOTSPOT) { HotspotSplitScreen(navController) }
             composable(Routes.BUDGET) { DataBudgetScreen(navController) }
             composable(Routes.CALIBRATE) { CalibrateScreen(navController) }
-            composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
-            composable(Routes.LEAK_DETECTOR) { ToolsPlaceholder("Leak Detector", navController) }
-            composable(Routes.TRAVEL) { ToolsPlaceholder("Travel Mode", navController) }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun ToolsPlaceholder(title: String, navController: androidx.navigation.NavController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(title) },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        Box(Modifier.padding(padding).padding(24.dp)) {
-            Text("$title is connected. Full feature implementation continues.")
+            composable(Routes.LEAK_DETECTOR) { LeakDetectorScreen(navController) }
+            composable(Routes.TRAVEL) { TravelModeScreen(navController) }
+            composable(Routes.PLAN_FINDER) { PlanFinderScreen(navController) }
         }
     }
 }
