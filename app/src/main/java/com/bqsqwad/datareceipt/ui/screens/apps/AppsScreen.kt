@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-private data class InstalledApp(
+data class InstalledApp(
     val name: String,
     val packageName: String,
     val isSystem: Boolean,
