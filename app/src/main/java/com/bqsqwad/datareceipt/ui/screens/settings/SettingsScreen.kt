@@ -13,10 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bqsqwad.datareceipt.R
 import com.bqsqwad.datareceipt.ui.components.CompanyPlate
+import com.bqsqwad.datareceipt.ui.navigation.Routes
 
 @Composable
 fun SettingsScreen(navController: NavController) {
@@ -26,36 +28,64 @@ fun SettingsScreen(navController: NavController) {
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
-        Text("Settings", style = MaterialTheme.typography.headlineMedium)
+        Text(stringResource(R.string.nav_settings), style = MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(16.dp))
 
-        SettingsSection("Profile & Region") {
-            SettingsItem(Icons.Default.Public, "Country & Currency", "Nigeria · NGN")
-            SettingsItem(Icons.Default.Language, "Language", "English")
+        SettingsSection(stringResource(R.string.settings_profile)) {
+            SettingsItem(Icons.Default.Public, "Country & Currency", "Nigeria · NGN") {
+                navController.navigate(Routes.COUNTRY_PICKER)
+            }
+            SettingsItem(Icons.Default.Language, "Language", "English") {
+                // Language picker placeholder – will open system or in-app
+            }
         }
 
-        SettingsSection("My Bundles") {
-            SettingsItem(Icons.Default.DataUsage, "Active Bundle", "None set")
-            SettingsItem(Icons.Default.Add, "Add Bundle", null)
+        SettingsSection(stringResource(R.string.settings_bundles)) {
+            SettingsItem(Icons.Default.DataUsage, "Active Bundle", "None set") {
+                navController.navigate(Routes.BUNDLE_EDITOR)
+            }
+            SettingsItem(Icons.Default.Add, "Add Bundle", null) {
+                navController.navigate(Routes.BUNDLE_EDITOR)
+            }
         }
 
-        SettingsSection("Appearance") {
-            SettingsItem(Icons.Default.Palette, "Theme", "Sky Light")
+        SettingsSection(stringResource(R.string.settings_appearance)) {
+            SettingsItem(Icons.Default.Palette, "Theme", "Sky Light") {
+                navController.navigate(Routes.THEME_PICKER)
+            }
         }
 
-        SettingsSection("Privacy & Ads") {
-            SettingsItem(Icons.Default.PrivacyTip, stringResource(R.string.privacy_policy), null)
-            SettingsItem(Icons.Default.Description, stringResource(R.string.terms_conditions), null)
-            SettingsItem(Icons.Default.Copyright, stringResource(R.string.copyright_notices), null)
+        SettingsSection(stringResource(R.string.settings_privacy)) {
+            SettingsItem(Icons.Default.PrivacyTip, stringResource(R.string.privacy_policy), null) {
+                navController.navigate(Routes.PRIVACY)
+            }
+            SettingsItem(Icons.Default.Description, stringResource(R.string.terms_conditions), null) {
+                navController.navigate(Routes.TERMS)
+            }
+            SettingsItem(Icons.Default.Copyright, stringResource(R.string.copyright_notices), null) {
+                navController.navigate(Routes.COPYRIGHT)
+            }
         }
 
         SettingsSection("More") {
-            SettingsItem(Icons.Default.Apps, stringResource(R.string.more_from_bq_sqwad), null)
-            SettingsItem(Icons.Default.Info, "About", "v1.0.0")
+            SettingsItem(Icons.Default.Apps, stringResource(R.string.more_from_company), null) {
+                navController.navigate(Routes.MORE_FROM)
+            }
+            SettingsItem(Icons.Default.Info, stringResource(R.string.settings_about), "v1.0.0") {
+                navController.navigate(Routes.ABOUT)
+            }
+            SettingsItem(Icons.Default.Help, "Help & FAQ", null) {
+                navController.navigate(Routes.HELP)
+            }
         }
 
         Spacer(Modifier.height(24.dp))
-        CompanyPlate()
+        CompanyPlate(
+            onPrivacy = { navController.navigate(Routes.PRIVACY) },
+            onTerms = { navController.navigate(Routes.TERMS) },
+            onCopyright = { navController.navigate(Routes.COPYRIGHT) },
+            onMore = { navController.navigate(Routes.MORE_FROM) }
+        )
         Spacer(Modifier.height(32.dp))
     }
 }
@@ -78,11 +108,16 @@ private fun SettingsSection(title: String, content: @Composable ColumnScope.() -
 }
 
 @Composable
-private fun SettingsItem(icon: ImageVector, title: String, subtitle: String?) {
+private fun SettingsItem(
+    icon: ImageVector,
+    title: String,
+    subtitle: String?,
+    onClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { }
+            .clickable(role = Role.Button, onClick = onClick)
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

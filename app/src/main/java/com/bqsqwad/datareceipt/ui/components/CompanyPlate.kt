@@ -14,7 +14,13 @@ import com.bqsqwad.datareceipt.ui.theme.SkyTint
 import java.util.Calendar
 
 @Composable
-fun CompanyPlate(modifier: Modifier = Modifier) {
+fun CompanyPlate(
+    modifier: Modifier = Modifier,
+    onPrivacy: () -> Unit = {},
+    onTerms: () -> Unit = {},
+    onCopyright: () -> Unit = {},
+    onMore: () -> Unit = {}
+) {
     val year = Calendar.getInstance().get(Calendar.YEAR)
     Card(
         modifier = modifier.fillMaxWidth(),
@@ -42,14 +48,23 @@ fun CompanyPlate(modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Row(
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.padding(top = 4.dp)
             ) {
-                TextButton(onClick = {}) { Text(stringResource(R.string.privacy_policy), style = MaterialTheme.typography.labelSmall) }
+                TextButton(onClick = onPrivacy) {
+                    Text(stringResource(R.string.privacy_policy), style = MaterialTheme.typography.labelSmall)
+                }
                 Text(".", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                TextButton(onClick = {}) { Text(stringResource(R.string.terms_conditions), style = MaterialTheme.typography.labelSmall) }
+                TextButton(onClick = onTerms) {
+                    Text(stringResource(R.string.terms_conditions), style = MaterialTheme.typography.labelSmall)
+                }
                 Text(".", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                TextButton(onClick = {}) { Text(stringResource(R.string.copyright_notices), style = MaterialTheme.typography.labelSmall) }
+                TextButton(onClick = onCopyright) {
+                    Text(stringResource(R.string.copyright_notices), style = MaterialTheme.typography.labelSmall)
+                }
+            }
+            TextButton(onClick = onMore) {
+                Text(stringResource(R.string.more_from_company), style = MaterialTheme.typography.labelMedium)
             }
             Text(
                 "com.bqsqwad.datareceipt · v1.0.0",
