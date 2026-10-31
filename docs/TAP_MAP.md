@@ -1,36 +1,40 @@
 # Tap Map — BQ Sqwad Data Receipt
 
-## Status: ✅ connected · 🟡 partial · ❌ dead (should be zero)
+## Legend: ✅ connected · 🟡 partial · ❌ dead (target: zero)
 
 ## Home
 | Element | Action | Status |
 |---------|--------|--------|
-| Grant access card | Opens system Usage Access (after disclosure path) | ✅ |
-| Company Plate links | Privacy / Terms / Copyright / More | ✅ |
-| Inline banner | Ad (between cards) | ✅ |
+| Grant access | Opens Usage Access settings | ✅ |
+| Company Plate | Privacy / Terms / Copyright / More | ✅ |
+| Inline banner | Between cards | ✅ |
 
-## Tools
+## Tools (all 8)
 | Element | Action | Status |
 |---------|--------|--------|
 | Live Cost Bubble | Screen + RewardedGate | ✅ |
-| Cost Calculator | Full interactive calculator | ✅ |
-| Hotspot Split | Full calculator + copy message | ✅ |
-| Data Budget | Limit + alert toggles | ✅ |
-| Calibrate | Balance entry + paste note | ✅ |
-| Plan Finder / Leak / Travel | Navigate to screen | 🟡 |
+| Cost Calculator | Interactive estimates | ✅ |
+| Hotspot Split | Calculator + copy | ✅ |
+| Data Budget | Limit + alerts | ✅ |
+| Calibrate | Balance entry | ✅ |
+| Leak Detector | Screen + guidance | ✅ |
+| Travel Mode | Toggle + notes | ✅ |
+| Best Plan Finder | Screen + empty library note | ✅ |
 
 ## Settings
 | Element | Action | Status |
 |---------|--------|--------|
-| Country & Currency | Persists selection | ✅ |
-| Theme | Persists selection | ✅ |
-| Privacy / Terms / Copyright | In-app legal | ✅ |
-| About | Package, version, links | ✅ |
-| More from BQ Sqwad Technologies | Showcase + TikTok/YouTube | ✅ |
+| Country & Currency | Persists | ✅ |
+| Theme | Persists | ✅ |
+| Active Bundle / Add Bundle | BundleEditorScreen | ✅ |
+| Privacy / Terms / Copyright | Legal screens | ✅ |
+| About | Package + version + links | ✅ |
+| More from BQ Sqwad Technologies | Showcase | ✅ |
+| Help | Opens help content | ✅ |
 
-## Company Plate / More
+## More / Company Plate
 | Element | Action | Status |
 |---------|--------|--------|
-| Privacy / Terms / Copyright | Legal screens | ✅ |
-| More from BQ Sqwad Technologies | Showcase | ✅ |
 | TikTok / YouTube | External links | ✅ |
+| Recommended apps | Coming soon chips | ✅ |
+| Legal links | In-app screens | ✅ |
