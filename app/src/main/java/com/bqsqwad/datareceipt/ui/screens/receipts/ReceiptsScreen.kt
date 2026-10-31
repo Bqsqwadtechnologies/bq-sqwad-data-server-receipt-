@@ -7,11 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bqsqwad.datareceipt.ads.BannerPlacement
 import com.bqsqwad.datareceipt.ads.InlineBannerSlot
+import com.bqsqwad.datareceipt.ui.navigation.Routes
 
 @Composable
-fun ReceiptsScreen() {
+fun ReceiptsScreen(navController: NavController? = null) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -24,19 +26,32 @@ fun ReceiptsScreen() {
         }
         item {
             Card(
+                onClick = { navController?.navigate(Routes.RECEIPT_PREVIEW) },
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large
             ) {
-                Box(
-                    Modifier.padding(32.dp),
-                    contentAlignment = Alignment.Center
-                ) {
+                Box(Modifier.padding(32.dp), contentAlignment = Alignment.Center) {
                     Text(
-                        "Your weekly Data Receipts will appear here once usage data is available.\n\n" +
-                        "Premium styles and extended history can be unlocked with a short ad.",
+                        "Tap to open a sample Data Receipt.\n\nPremium styles unlock with a short ad. Share triggers an interstitial when available.",
                         style = MaterialTheme.typography.bodyLarge
                     )
                 }
+            }
+        }
+        item {
+            OutlinedButton(
+                onClick = { navController?.navigate(Routes.DATA_WRAPPED) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Data Wrapped (monthly recap)")
+            }
+        }
+        item {
+            OutlinedButton(
+                onClick = { navController?.navigate(Routes.DATA_COACH) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Data Coach")
             }
         }
         item {

@@ -90,7 +90,7 @@ fun AppNavHost() {
             composable(Screen.Home.route) { HomeScreen() }
             composable(Screen.Apps.route) { AppsScreen() }
             composable(Screen.Tools.route) { ToolsScreen(navController) }
-            composable(Screen.Receipts.route) { ReceiptsScreen() }
+            composable(Screen.Receipts.route) { ReceiptsScreen(navController) }
             composable(Screen.Settings.route) { SettingsScreen(navController) }
 
             composable(Routes.THEME_PICKER) { ThemePickerScreen(navController) }
