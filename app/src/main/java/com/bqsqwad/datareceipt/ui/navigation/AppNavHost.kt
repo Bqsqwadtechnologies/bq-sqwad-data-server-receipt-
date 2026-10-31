@@ -16,11 +16,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.bqsqwad.datareceipt.R
-import com.bqsqwad.datareceipt.ui.screens.home.HomeScreen
 import com.bqsqwad.datareceipt.ui.screens.apps.AppsScreen
-import com.bqsqwad.datareceipt.ui.screens.tools.ToolsScreen
+import com.bqsqwad.datareceipt.ui.screens.home.HomeScreen
+import com.bqsqwad.datareceipt.ui.screens.legal.LegalScreen
+import com.bqsqwad.datareceipt.ui.screens.legal.LegalType
+import com.bqsqwad.datareceipt.ui.screens.more.MoreFromScreen
 import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
+import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
+import com.bqsqwad.datareceipt.ui.screens.tools.ToolsScreen
 
 sealed class Screen(val route: String, val labelRes: Int, val selectedIcon: ImageVector, val unselectedIcon: ImageVector) {
     data object Home : Screen("home", R.string.nav_home, Icons.Filled.Home, Icons.Outlined.Home)
@@ -38,23 +42,27 @@ fun AppNavHost() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
+    val showBottomBar = currentDestination?.route in bottomNavItems.map { it.route }
+
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                bottomNavItems.forEach { screen ->
-                    val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
-                    NavigationBarItem(
-                        icon = { Icon(if (selected) screen.selectedIcon else screen.unselectedIcon, contentDescription = null) },
-                        label = { Text(stringResource(screen.labelRes)) },
-                        selected = selected,
-                        onClick = {
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
+            if (showBottomBar) {
+                NavigationBar {
+                    bottomNavItems.forEach { screen ->
+                        val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
+                        NavigationBarItem(
+                            icon = { Icon(if (selected) screen.selectedIcon else screen.unselectedIcon, contentDescription = null) },
+                            label = { Text(stringResource(screen.labelRes)) },
+                            selected = selected,
+                            onClick = {
+                                navController.navigate(screen.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
@@ -66,9 +74,51 @@ fun AppNavHost() {
         ) {
             composable(Screen.Home.route) { HomeScreen() }
             composable(Screen.Apps.route) { AppsScreen() }
-            composable(Screen.Tools.route) { ToolsScreen() }
+            composable(Screen.Tools.route) { ToolsScreen(navController) }
             composable(Screen.Receipts.route) { ReceiptsScreen() }
             composable(Screen.Settings.route) { SettingsScreen(navController) }
+
+            // Nested destinations
+            composable(Routes.THEME_PICKER) { ThemePickerScreen(navController) }
+            composable(Routes.PRIVACY) { LegalScreen(LegalType.PRIVACY, navController) }
+            composable(Routes.TERMS) { LegalScreen(LegalType.TERMS, navController) }
+            composable(Routes.COPYRIGHT) { LegalScreen(LegalType.COPYRIGHT, navController) }
+            composable(Routes.MORE_FROM) { MoreFromScreen(navController) }
+            composable(Routes.ABOUT) { LegalScreen(LegalType.COPYRIGHT, navController) } // temporary reuse
+            composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) } // temporary
+            composable(Routes.COUNTRY_PICKER) { ThemePickerScreen(navController) } // temporary placeholder
+            composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) } // temporary placeholder
+
+            // Tools destinations (placeholders that prevent dead navigation)
+            composable(Routes.LIVE_BUBBLE) { ToolsPlaceholder("Live Cost Bubble", navController) }
+            composable(Routes.CALCULATOR) { ToolsPlaceholder("Cost Calculator", navController) }
+            composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
+            composable(Routes.BUDGET) { ToolsPlaceholder("Budget Goal", navController) }
+            composable(Routes.CALIBRATE) { ToolsPlaceholder("Calibrate", navController) }
+            composable(Routes.LEAK_DETECTOR) { ToolsPlaceholder("Leak Detector", navController) }
+            composable(Routes.HOTSPOT) { ToolsPlaceholder("Hotspot Cost", navController) }
+            composable(Routes.TRAVEL) { ToolsPlaceholder("Travel Mode", navController) }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ToolsPlaceholder(title: String, navController: androidx.navigation.NavController) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(title) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        Box(Modifier.padding(padding).padding(24.dp)) {
+            Text("$title screen is connected. Full implementation continues in next phases.")
         }
     }
 }
