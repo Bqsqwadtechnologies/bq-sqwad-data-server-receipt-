@@ -54,11 +54,21 @@ fun LiveBubbleScreen(navController: NavController) {
     fun activateBubble() {
         val appOps = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
         val usageAllowed = runCatching {
-            appOps.unsafeCheckOpNoThrow(
-                "android:get_usage_stats",
-                android.os.Process.myUid(),
-                context.packageName
-            ) == AppOpsManager.MODE_ALLOWED
+            val mode = if (Build.VERSION.SDK_INT >= 29) {
+                appOps.unsafeCheckOpNoThrow(
+                    AppOpsManager.OPSTR_GET_USAGE_STATS,
+                    android.os.Process.myUid(),
+                    context.packageName
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                appOps.checkOpNoThrow(
+                    AppOpsManager.OPSTR_GET_USAGE_STATS,
+                    android.os.Process.myUid(),
+                    context.packageName
+                )
+            }
+            mode == AppOpsManager.MODE_ALLOWED
         }.getOrDefault(false)
         if (!usageAllowed) {
             context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
