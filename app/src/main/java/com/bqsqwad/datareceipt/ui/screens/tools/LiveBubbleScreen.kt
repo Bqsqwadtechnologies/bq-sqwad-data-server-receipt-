@@ -198,8 +198,8 @@ fun LiveBubbleScreen(navController: NavController) {
         visible = showGate,
         onDismiss = { showGate = false },
         onUnlocked = {
+            // Unlock access only. Let the user start the bubble manually.
             showGate = false
-            activateBubble()
         },
         adManager = viewModel.adManager,
         unlockStore = viewModel.unlockStore
