@@ -66,11 +66,6 @@ fun CompanyPlate(
             TextButton(onClick = onMore) {
                 Text(stringResource(R.string.more_from_company), style = MaterialTheme.typography.labelMedium)
             }
-            Text(
-                "com.bqsqwad.datareceipt · v1.0.0",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
         }
     }
 }
