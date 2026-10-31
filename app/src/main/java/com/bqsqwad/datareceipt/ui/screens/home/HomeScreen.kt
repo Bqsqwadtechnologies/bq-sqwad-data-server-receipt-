@@ -1,7 +1,5 @@
 package com.bqsqwad.datareceipt.ui.screens.home
 
-import android.content.Intent
-import android.provider.Settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,15 +17,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bqsqwad.datareceipt.R
-import com.bqsqwad.datareceipt.ads.BannerAdView
 import com.bqsqwad.datareceipt.ads.BannerPlacement
+import com.bqsqwad.datareceipt.ads.InlineBannerSlot
 import com.bqsqwad.datareceipt.ui.components.CompanyPlate
 import com.bqsqwad.datareceipt.ui.theme.SkyPrimary
 import com.bqsqwad.datareceipt.ui.theme.SkyTint
+import com.bqsqwad.datareceipt.util.PermissionHelper
 
 @Composable
 fun HomeScreen() {
     val context = LocalContext.current
+    val hasUsage = PermissionHelper.hasUsageAccess(context)
 
     Column(
         modifier = Modifier
@@ -76,32 +76,6 @@ fun HomeScreen() {
             }
         }
 
-        // Grant access card
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable(role = Role.Button) {
-                    context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-                },
-            shape = RoundedCornerShape(20.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
-        ) {
-            Column(Modifier.padding(20.dp)) {
-                Text(stringResource(R.string.usage_access_title), style = MaterialTheme.typography.titleMedium)
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    stringResource(R.string.usage_access_message),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Spacer(Modifier.height(12.dp))
-                Button(onClick = {
-                    context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-                }) {
-                    Text(stringResource(R.string.action_grant_access))
-                }
-            }
-        }
-
         // Runway card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -118,6 +92,37 @@ fun HomeScreen() {
             }
         }
 
+        // Inline banner AFTER hero + runway (between non-interactive cards)
+        InlineBannerSlot(placement = BannerPlacement.HOME)
+
+        // Grant access / status card
+        if (!hasUsage) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(role = Role.Button) {
+                        PermissionHelper.openUsageAccessSettings(context)
+                    },
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+            ) {
+                Column(Modifier.padding(20.dp)) {
+                    Text(stringResource(R.string.usage_access_title), style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        stringResource(R.string.usage_access_message),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    Button(onClick = {
+                        PermissionHelper.openUsageAccessSettings(context)
+                    }) {
+                        Text(stringResource(R.string.action_grant_access))
+                    }
+                }
+            }
+        }
+
         // Top spenders
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -127,7 +132,7 @@ fun HomeScreen() {
                 Text(stringResource(R.string.top_spenders), style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.height(12.dp))
                 Text(
-                    "Grant Usage Access to see per-app costs",
+                    if (hasUsage) "Usage data will appear here" else "Grant Usage Access to see per-app costs",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -151,8 +156,6 @@ fun HomeScreen() {
         }
 
         CompanyPlate()
-
-        BannerAdView(placement = BannerPlacement.HOME)
 
         Spacer(Modifier.height(24.dp))
     }
