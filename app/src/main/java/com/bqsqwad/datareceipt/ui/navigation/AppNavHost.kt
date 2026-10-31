@@ -21,18 +21,21 @@ import com.bqsqwad.datareceipt.R
 import com.bqsqwad.datareceipt.ui.MainViewModel
 import com.bqsqwad.datareceipt.ui.screens.about.AboutScreen
 import com.bqsqwad.datareceipt.ui.screens.apps.AppsScreen
+import com.bqsqwad.datareceipt.ui.screens.coach.DataCoachScreen
 import com.bqsqwad.datareceipt.ui.screens.help.HelpScreen
 import com.bqsqwad.datareceipt.ui.screens.home.HomeScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalType
 import com.bqsqwad.datareceipt.ui.screens.more.MoreFromScreen
 import com.bqsqwad.datareceipt.ui.screens.onboarding.OnboardingScreen
+import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptPreviewScreen
 import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.BundleEditorScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.CountryCurrencyScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.*
+import com.bqsqwad.datareceipt.ui.screens.wrapped.DataWrappedScreen
 
 sealed class Screen(val route: String, val labelRes: Int, val selectedIcon: ImageVector, val unselectedIcon: ImageVector) {
     data object Home : Screen("home", R.string.nav_home, Icons.Filled.Home, Icons.Outlined.Home)
@@ -108,6 +111,10 @@ fun AppNavHost() {
             composable(Routes.LEAK_DETECTOR) { LeakDetectorScreen(navController) }
             composable(Routes.TRAVEL) { TravelModeScreen(navController) }
             composable(Routes.PLAN_FINDER) { PlanFinderScreen(navController) }
+
+            composable(Routes.RECEIPT_PREVIEW) { ReceiptPreviewScreen(navController) }
+            composable(Routes.DATA_WRAPPED) { DataWrappedScreen(navController) }
+            composable(Routes.DATA_COACH) { DataCoachScreen(navController) }
         }
     }
 }

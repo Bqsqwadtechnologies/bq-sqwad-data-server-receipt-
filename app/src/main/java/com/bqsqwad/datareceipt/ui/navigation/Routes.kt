@@ -16,8 +16,11 @@ object Routes {
     const val TERMS = "terms"
     const val COPYRIGHT = "copyright"
     const val MORE_FROM = "more_from"
+    const val HELP = "help"
     const val APP_DETAIL = "app_detail/{packageName}"
-    const val RECEIPT_PREVIEW = "receipt_preview/{id}"
+    const val RECEIPT_PREVIEW = "receipt_preview"
+    const val DATA_WRAPPED = "data_wrapped"
+    const val DATA_COACH = "data_coach"
     const val LIVE_BUBBLE = "live_bubble"
     const val CALCULATOR = "calculator"
     const val PLAN_FINDER = "plan_finder"
@@ -26,9 +29,7 @@ object Routes {
     const val LEAK_DETECTOR = "leak_detector"
     const val HOTSPOT = "hotspot"
     const val TRAVEL = "travel"
-    const val HELP = "help"
     const val DIAGNOSTICS = "diagnostics"
 
     fun appDetail(packageName: String) = "app_detail/$packageName"
-    fun receiptPreview(id: String) = "receipt_preview/$id"
 }
