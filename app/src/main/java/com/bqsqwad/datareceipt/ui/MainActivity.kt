@@ -22,6 +22,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    companion object {
+        const val EXTRA_OPEN_LIVE_BUBBLE = "open_live_bubble_prompt"
+    }
+
     @Inject
     lateinit var consentManager: ConsentManager
 
@@ -42,7 +46,7 @@ class MainActivity : ComponentActivity() {
             val theme by viewModel.theme.collectAsStateWithLifecycle()
             BQSqwadDataReceiptTheme(appTheme = theme) {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    AppNavHost()
+                    AppNavHost(openLiveBubblePrompt = intent.getBooleanExtra(EXTRA_OPEN_LIVE_BUBBLE, false))
                 }
             }
         }
