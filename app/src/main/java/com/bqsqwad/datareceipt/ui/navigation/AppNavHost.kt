@@ -29,8 +29,10 @@ import com.bqsqwad.datareceipt.ui.screens.legal.LegalType
 import com.bqsqwad.datareceipt.ui.screens.more.MoreFromScreen
 import com.bqsqwad.datareceipt.ui.screens.onboarding.OnboardingScreen
 import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
+import com.bqsqwad.datareceipt.ui.screens.settings.CountryCurrencyScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
+import com.bqsqwad.datareceipt.ui.screens.tools.CalculatorScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.LiveBubbleScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.ToolsScreen
 
@@ -98,12 +100,11 @@ fun AppNavHost() {
             composable(Routes.MORE_FROM) { MoreFromScreen(navController) }
             composable(Routes.ABOUT) { AboutScreen(navController) }
             composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) }
-            composable(Routes.COUNTRY_PICKER) { ThemePickerScreen(navController) }
+            composable(Routes.COUNTRY_PICKER) { CountryCurrencyScreen(navController) }
             composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) }
 
-            // Tools
             composable(Routes.LIVE_BUBBLE) { LiveBubbleScreen(navController) }
-            composable(Routes.CALCULATOR) { ToolsPlaceholder("Cost Calculator", navController) }
+            composable(Routes.CALCULATOR) { CalculatorScreen(navController) }
             composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
             composable(Routes.BUDGET) { ToolsPlaceholder("Budget Goal", navController) }
             composable(Routes.CALIBRATE) { ToolsPlaceholder("Calibrate", navController) }
