@@ -47,7 +47,7 @@ fun RewardedGate(
     }
 
     val benefit = if (feature == RewardedFeature.LIVE_BUBBLE) {
-        "Watch two short ads to unlock this feature for 24 hours."
+        "Watch two short ads to activate this feature for 6 hours."
     } else {
         "Watch a short ad to unlock this feature for 24 hours."
     }
