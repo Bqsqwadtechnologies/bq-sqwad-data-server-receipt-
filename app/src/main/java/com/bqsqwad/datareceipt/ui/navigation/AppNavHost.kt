@@ -21,6 +21,7 @@ import com.bqsqwad.datareceipt.R
 import com.bqsqwad.datareceipt.ui.MainViewModel
 import com.bqsqwad.datareceipt.ui.screens.about.AboutScreen
 import com.bqsqwad.datareceipt.ui.screens.apps.AppsScreen
+import com.bqsqwad.datareceipt.ui.screens.help.HelpScreen
 import com.bqsqwad.datareceipt.ui.screens.home.HomeScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalType
@@ -95,7 +96,7 @@ fun AppNavHost() {
             composable(Routes.COPYRIGHT) { LegalScreen(LegalType.COPYRIGHT, navController) }
             composable(Routes.MORE_FROM) { MoreFromScreen(navController) }
             composable(Routes.ABOUT) { AboutScreen(navController) }
-            composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) }
+            composable(Routes.HELP) { HelpScreen(navController) }
             composable(Routes.COUNTRY_PICKER) { CountryCurrencyScreen(navController) }
             composable(Routes.BUNDLE_EDITOR) { BundleEditorScreen(navController) }
 
