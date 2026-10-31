@@ -11,18 +11,17 @@ import java.io.FileInputStream
 
 android {
     namespace = "com.bqsqwad.datareceipt"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.bqsqwad.datareceipt"
         minSdk = 26
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        targetSdk = 35
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // All AdMob IDs flow from gradle.properties into BuildConfig
         buildConfigField("String", "ADMOB_APP_ID", "\"${project.findProperty("ADMOB_APP_ID") ?: "ca-app-pub-3940256099942544~3347511713"}\"")
         buildConfigField("String", "ADMOB_BANNER_HOME", "\"${project.findProperty("ADMOB_BANNER_HOME") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
         buildConfigField("String", "ADMOB_BANNER_APPS", "\"${project.findProperty("ADMOB_BANNER_APPS") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
