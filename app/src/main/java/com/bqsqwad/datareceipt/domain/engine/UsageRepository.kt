@@ -34,11 +34,17 @@ class UsageRepository @Inject constructor(
     fun hasUsagePermission(): Boolean {
         return try {
             val appOps = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
-            appOps.unsafeCheckOpNoThrow(
-                "android:get_usage_stats",
-                Process.myUid(),
-                context.packageName
-            ) == AppOpsManager.MODE_ALLOWED
+            val mode = if (android.os.Build.VERSION.SDK_INT >= 29) {
+                appOps.unsafeCheckOpNoThrow(
+                    AppOpsManager.OPSTR_GET_USAGE_STATS, Process.myUid(), context.packageName
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                appOps.checkOpNoThrow(
+                    AppOpsManager.OPSTR_GET_USAGE_STATS, Process.myUid(), context.packageName
+                )
+            }
+            mode == AppOpsManager.MODE_ALLOWED
         } catch (_: Exception) {
             false
         }
