@@ -48,7 +48,7 @@ sealed class Screen(val route: String, val labelRes: Int, val selectedIcon: Imag
 val bottomNavItems = listOf(Screen.Home, Screen.Apps, Screen.Tools, Screen.Receipts, Screen.Settings)
 
 @Composable
-fun AppNavHost() {
+fun AppNavHost(openLiveBubblePrompt: Boolean = false) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -56,6 +56,12 @@ fun AppNavHost() {
     val onboardingDone by mainViewModel.isOnboardingDone.collectAsStateWithLifecycle()
 
     val startDestination = if (onboardingDone) Screen.Home.route else Routes.ONBOARDING
+
+    LaunchedEffect(openLiveBubblePrompt, onboardingDone) {
+        if (openLiveBubblePrompt && onboardingDone) {
+            navController.navigate(Routes.LIVE_BUBBLE) { launchSingleTop = true }
+        }
+    }
     val showBottomBar = currentDestination?.route in bottomNavItems.map { it.route }
 
     Scaffold(
