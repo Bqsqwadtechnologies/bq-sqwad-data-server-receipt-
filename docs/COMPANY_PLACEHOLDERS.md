@@ -1,13 +1,10 @@
-# Placeholders the owner must fill
+# Company placeholders (owner fills)
 
-Edit `config/company.json` and the legal documents:
-
-- address
-- email (support)
-- phone
-- registrationNumber
-- websiteApps
-- websiteContent
-- playStoreUrl / packageName for BQ Sqwad AI and BQ Sqwad Data Saver
-- Real AdMob App ID and Ad Unit IDs in `gradle.properties`
-- Play Console “Remove ads” product (set ENABLE_REMOVE_ADS=true when ready)
+| Field | Current | Action |
+|-------|---------|--------|
+| Support email | hello@bqsqwadai.com | Confirm or change in config/company.json |
+| Physical address | empty | Add if required for store |
+| Play links for BQ Sqwad AI / Data Saver | empty | Add when apps are live |
+| Carrier USSD codes | empty in config/carriers.json | Fill verified codes only |
+| Plan library | empty in config/plans.json | Optional |
+| New AdMob units (Settings, Detail, Native, Insights, Pass, Wrapped) | empty keys | Create in AdMob then paste |
