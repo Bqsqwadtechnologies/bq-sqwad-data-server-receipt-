@@ -21,6 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.bqsqwad.datareceipt.R
 import com.bqsqwad.datareceipt.ui.MainViewModel
+import com.bqsqwad.datareceipt.ui.screens.about.AboutScreen
 import com.bqsqwad.datareceipt.ui.screens.apps.AppsScreen
 import com.bqsqwad.datareceipt.ui.screens.home.HomeScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalScreen
@@ -30,6 +31,7 @@ import com.bqsqwad.datareceipt.ui.screens.onboarding.OnboardingScreen
 import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
+import com.bqsqwad.datareceipt.ui.screens.tools.LiveBubbleScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.ToolsScreen
 
 sealed class Screen(val route: String, val labelRes: Int, val selectedIcon: ImageVector, val unselectedIcon: ImageVector) {
@@ -51,7 +53,6 @@ fun AppNavHost() {
     val onboardingDone by mainViewModel.isOnboardingDone.collectAsStateWithLifecycle()
 
     val startDestination = if (onboardingDone) Screen.Home.route else Routes.ONBOARDING
-
     val showBottomBar = currentDestination?.route in bottomNavItems.map { it.route }
 
     Scaffold(
@@ -95,12 +96,13 @@ fun AppNavHost() {
             composable(Routes.TERMS) { LegalScreen(LegalType.TERMS, navController) }
             composable(Routes.COPYRIGHT) { LegalScreen(LegalType.COPYRIGHT, navController) }
             composable(Routes.MORE_FROM) { MoreFromScreen(navController) }
-            composable(Routes.ABOUT) { LegalScreen(LegalType.COPYRIGHT, navController) }
+            composable(Routes.ABOUT) { AboutScreen(navController) }
             composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) }
             composable(Routes.COUNTRY_PICKER) { ThemePickerScreen(navController) }
             composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) }
 
-            composable(Routes.LIVE_BUBBLE) { ToolsPlaceholder("Live Cost Bubble", navController) }
+            // Tools
+            composable(Routes.LIVE_BUBBLE) { LiveBubbleScreen(navController) }
             composable(Routes.CALCULATOR) { ToolsPlaceholder("Cost Calculator", navController) }
             composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
             composable(Routes.BUDGET) { ToolsPlaceholder("Budget Goal", navController) }
