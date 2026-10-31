@@ -31,7 +31,6 @@
         android:theme="@style/Theme.BQSqwadDataReceipt"
         tools:targetApi="36">
 
-        <!-- DataReceiptApp supplies the custom Hilt WorkerFactory configuration. -->
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
@@ -51,7 +50,8 @@
             android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.BQSqwadDataReceipt.Splash"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:enableOnBackInvokedCallback="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
