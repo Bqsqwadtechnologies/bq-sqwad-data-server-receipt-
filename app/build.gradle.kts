@@ -11,7 +11,6 @@ import java.io.FileInputStream
 
 android {
     namespace = "com.bqsqwad.datareceipt"
-    // Google Play (from 31 Aug 2026): new apps/updates must target API 36+
     compileSdk = 36
 
     defaultConfig {
@@ -23,15 +22,21 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // Production AdMob IDs come from gradle.properties; debug falls back to Google sample units
         buildConfigField("String", "ADMOB_APP_ID", "\"${project.findProperty("ADMOB_APP_ID") ?: "ca-app-pub-3940256099942544~3347511713"}\"")
         buildConfigField("String", "ADMOB_BANNER_HOME", "\"${project.findProperty("ADMOB_BANNER_HOME") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
         buildConfigField("String", "ADMOB_BANNER_APPS", "\"${project.findProperty("ADMOB_BANNER_APPS") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
         buildConfigField("String", "ADMOB_BANNER_TOOLS", "\"${project.findProperty("ADMOB_BANNER_TOOLS") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
         buildConfigField("String", "ADMOB_BANNER_RECEIPT", "\"${project.findProperty("ADMOB_BANNER_RECEIPT") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
+        buildConfigField("String", "ADMOB_BANNER_SETTINGS", "\"${project.findProperty("ADMOB_BANNER_SETTINGS") ?: ""}\"")
+        buildConfigField("String", "ADMOB_BANNER_DETAIL", "\"${project.findProperty("ADMOB_BANNER_DETAIL") ?: ""}\"")
+        buildConfigField("String", "ADMOB_NATIVE_APPS", "\"${project.findProperty("ADMOB_NATIVE_APPS") ?: ""}\"")
+        buildConfigField("String", "ADMOB_NATIVE_RECEIPTS", "\"${project.findProperty("ADMOB_NATIVE_RECEIPTS") ?: ""}\"")
         buildConfigField("String", "ADMOB_REWARDED_LIVE_BUBBLE", "\"${project.findProperty("ADMOB_REWARDED_LIVE_BUBBLE") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
         buildConfigField("String", "ADMOB_REWARDED_PREMIUM_RECEIPT", "\"${project.findProperty("ADMOB_REWARDED_PREMIUM_RECEIPT") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
         buildConfigField("String", "ADMOB_REWARDED_EXTENDED_HISTORY", "\"${project.findProperty("ADMOB_REWARDED_EXTENDED_HISTORY") ?: "ca-app-pub-3940256099942544/5224354917"}\"")
+        buildConfigField("String", "ADMOB_REWARDED_INSIGHTS", "\"${project.findProperty("ADMOB_REWARDED_INSIGHTS") ?: ""}\"")
+        buildConfigField("String", "ADMOB_REWARDED_PASS", "\"${project.findProperty("ADMOB_REWARDED_PASS") ?: ""}\"")
+        buildConfigField("String", "ADMOB_REWARDED_WRAPPED", "\"${project.findProperty("ADMOB_REWARDED_WRAPPED") ?: ""}\"")
         buildConfigField("String", "ADMOB_INTERSTITIAL_SHARE", "\"${project.findProperty("ADMOB_INTERSTITIAL_SHARE") ?: "ca-app-pub-3940256099942544/1033173712"}\"")
         buildConfigField("Boolean", "ENABLE_REMOVE_ADS", "${project.findProperty("ENABLE_REMOVE_ADS") ?: "false"}")
 
@@ -97,7 +102,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-        // Ready for 16 KB page-size devices (Play requirement path)
         jniLibs {
             useLegacyPackaging = false
         }
@@ -116,6 +120,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons.extended)
+    implementation("androidx.compose.foundation:foundation")
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
@@ -126,7 +131,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.hilt.work)
-    ksp(libs.androidx.hilt.work)
+    ksp(libs.hilt.compiler)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
     implementation(libs.kotlinx.coroutines.android)

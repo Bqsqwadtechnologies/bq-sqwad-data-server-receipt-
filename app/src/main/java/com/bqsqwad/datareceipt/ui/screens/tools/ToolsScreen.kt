@@ -5,7 +5,14 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.Flight
+import androidx.compose.material.icons.filled.Layers
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.filled.WifiTethering
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,10 +36,10 @@ data class ToolItem(
 @Composable
 fun ToolsScreen(navController: NavController? = null) {
     val tools = listOf(
-        ToolItem(R.string.tool_live_bubble, Icons.Default.BubbleChart, "Floating cost while you use data", Routes.LIVE_BUBBLE, isPremium = true),
+        ToolItem(R.string.tool_live_bubble, Icons.Default.Speed, "Floating cost while you use data", Routes.LIVE_BUBBLE, isPremium = true),
         ToolItem(R.string.tool_calculator, Icons.Default.Calculate, "Before you download", Routes.CALCULATOR),
-        ToolItem(R.string.tool_plan_finder, Icons.Default.Compare, "Compare carrier plans", Routes.PLAN_FINDER),
-        ToolItem(R.string.tool_budget, Icons.Default.Savings, "Set a monthly data budget", Routes.BUDGET),
+        ToolItem(R.string.tool_plan_finder, Icons.Default.Search, "Compare carrier plans", Routes.PLAN_FINDER),
+        ToolItem(R.string.tool_budget, Icons.Default.Layers, "Set a monthly data budget", Routes.BUDGET),
         ToolItem(R.string.tool_calibrate, Icons.Default.Tune, "Match carrier balance", Routes.CALIBRATE),
         ToolItem(R.string.tool_leak, Icons.Default.Warning, "Apps using data while screen off", Routes.LEAK_DETECTOR),
         ToolItem(R.string.tool_hotspot, Icons.Default.WifiTethering, "Split hotspot cost (calculator)", Routes.HOTSPOT),
@@ -66,7 +73,7 @@ fun ToolsScreen(navController: NavController? = null) {
                             Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
                                 Icon(tool.icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                                 if (tool.isPremium) {
-                                    Text("🔒", style = MaterialTheme.typography.labelSmall)
+                                    Text("Premium", style = MaterialTheme.typography.labelSmall)
                                 }
                             }
                             Text(stringResource(tool.titleRes), style = MaterialTheme.typography.titleSmall)
@@ -80,8 +87,6 @@ fun ToolsScreen(navController: NavController? = null) {
                 }
             }
         }
-
-        // Inline banner below the grid (not between cards, not near nav)
         InlineBannerSlot(placement = BannerPlacement.TOOLS)
     }
 }
