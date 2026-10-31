@@ -100,6 +100,9 @@ fun AppsScreen() {
                     style = MaterialTheme.typography.bodySmall
                 )
                 Spacer(Modifier.height(8.dp))
+                OutlinedButton(onClick = { viewModel.load(context) }) {
+                    Text("Refresh app usage")
+                }
             }
             if (!viewModel.hasUsageAccess) {
                 item {
