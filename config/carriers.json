@@ -1,0 +1,38 @@
+{
+  "_comment": "Carrier balance codes and message parsers. Do not invent codes. Owner must fill and verify each entry. Empty codes are hidden in the UI.",
+  "countries": {
+    "NG": {
+      "name": "Nigeria",
+      "carriers": [
+        {
+          "id": "mtn_ng",
+          "name": "MTN",
+          "balanceUssd": "",
+          "dataBalanceUssd": "",
+          "messagePatterns": []
+        },
+        {
+          "id": "airtel_ng",
+          "name": "Airtel",
+          "balanceUssd": "",
+          "dataBalanceUssd": "",
+          "messagePatterns": []
+        },
+        {
+          "id": "glo_ng",
+          "name": "Glo",
+          "balanceUssd": "",
+          "dataBalanceUssd": "",
+          "messagePatterns": []
+        },
+        {
+          "id": "9mobile_ng",
+          "name": "9mobile",
+          "balanceUssd": "",
+          "dataBalanceUssd": "",
+          "messagePatterns": []
+        }
+      ]
+    }
+  }
+}
