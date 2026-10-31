@@ -197,7 +197,10 @@ fun LiveBubbleScreen(navController: NavController) {
         feature = RewardedFeature.LIVE_BUBBLE,
         visible = showGate,
         onDismiss = { showGate = false },
-        onUnlocked = { showGate = false },
+        onUnlocked = {
+            showGate = false
+            activateBubble()
+        },
         adManager = viewModel.adManager,
         unlockStore = viewModel.unlockStore
     )
