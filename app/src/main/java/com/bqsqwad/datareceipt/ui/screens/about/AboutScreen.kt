@@ -13,7 +13,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.bqsqwad.datareceipt.BuildConfig
 import com.bqsqwad.datareceipt.R
 import com.bqsqwad.datareceipt.ui.components.CompanyPlate
 import com.bqsqwad.datareceipt.ui.navigation.Routes
@@ -53,9 +52,7 @@ fun AboutScreen(navController: NavController) {
                 textAlign = TextAlign.Center
             )
             Spacer(Modifier.height(8.dp))
-            Text("Package: ${BuildConfig.APPLICATION_ID}")
-            Text("Version ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
-            Text("minSdk 26 · targetSdk 35 · compileSdk 35")
+            Text("Version information available in app settings")
             Spacer(Modifier.height(16.dp))
             TextButton(onClick = { navController.navigate(Routes.PRIVACY) }) {
                 Text(stringResource(R.string.privacy_policy))
