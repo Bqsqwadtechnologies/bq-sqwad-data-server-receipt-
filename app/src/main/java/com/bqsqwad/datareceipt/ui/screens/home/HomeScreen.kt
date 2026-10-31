@@ -1,6 +1,9 @@
 package com.bqsqwad.datareceipt.ui.screens.home
 
+import android.content.Intent
+import android.provider.Settings
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,7 +12,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,6 +27,8 @@ import com.bqsqwad.datareceipt.ui.theme.SkyTint
 
 @Composable
 fun HomeScreen() {
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -69,6 +76,32 @@ fun HomeScreen() {
             }
         }
 
+        // Grant access card
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(role = Role.Button) {
+                    context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+                },
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+        ) {
+            Column(Modifier.padding(20.dp)) {
+                Text(stringResource(R.string.usage_access_title), style = MaterialTheme.typography.titleMedium)
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    stringResource(R.string.usage_access_message),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(Modifier.height(12.dp))
+                Button(onClick = {
+                    context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+                }) {
+                    Text(stringResource(R.string.action_grant_access))
+                }
+            }
+        }
+
         // Runway card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -85,7 +118,7 @@ fun HomeScreen() {
             }
         }
 
-        // Top spenders placeholder
+        // Top spenders
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp)
@@ -119,7 +152,6 @@ fun HomeScreen() {
 
         CompanyPlate()
 
-        // Banner Ad (Home)
         BannerAdView(placement = BannerPlacement.HOME)
 
         Spacer(Modifier.height(24.dp))
