@@ -31,6 +31,18 @@
         android:theme="@style/Theme.BQSqwadDataReceipt"
         tools:targetApi="36">
 
+        <!-- DataReceiptApp supplies the custom Hilt WorkerFactory configuration. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="${admobAppId}" />
