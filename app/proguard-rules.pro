@@ -1,24 +1,29 @@
 # BQ Sqwad Data Receipt ProGuard rules
--keepattributes *Annotation*
--keepattributes SourceFile,LineNumberTable
--keep public class * extends java.lang.Exception
 
-# Hilt
+-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes Exceptions
+
+# Keep Hilt / Dagger
 -keep class dagger.hilt.** { *; }
 -keep class javax.inject.** { *; }
 -keep class * extends dagger.hilt.android.internal.managers.ViewComponentManager$FragmentContextWrapper { *; }
 
-# Room
--keep class * extends androidx.room.RoomDatabase
--keep @androidx.room.Entity class *
--dontwarn androidx.room.paging.**
-
-# AdMob / UMP
+# Keep AdMob / UMP
 -keep class com.google.android.gms.ads.** { *; }
 -keep class com.google.android.ump.** { *; }
+-dontwarn com.google.android.gms.**
 
-# Keep BigDecimal money math
--keep class java.math.BigDecimal { *; }
+# Keep Room entities
+-keep class com.bqsqwad.datareceipt.data.local.entity.** { *; }
 
-# Glance
--keep class androidx.glance.** { *; }
+# Keep native methods
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# Enums
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}

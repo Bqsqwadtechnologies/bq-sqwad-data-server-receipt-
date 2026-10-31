@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.bqsqwad.datareceipt.data.SettingsRepository
@@ -93,7 +94,7 @@ fun CountryCurrencyScreen(navController: NavController) {
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column(Modifier.weight(1f)) {
+                        Column(modifier = Modifier.weight(1f)) {
                             Text(country.name, style = MaterialTheme.typography.titleMedium)
                             Text("${country.currency} · ${country.currencyName}", style = MaterialTheme.typography.bodySmall)
                         }
@@ -105,10 +106,4 @@ fun CountryCurrencyScreen(navController: NavController) {
             }
         }
     }
-}
-
-// Helper for collectAsStateWithLifecycle without extra import noise in this file
-@Composable
-private fun <T> kotlinx.coroutines.flow.StateFlow<T>.collectAsStateWithLifecycle(): State<T> {
-    return androidx.lifecycle.compose.collectAsStateWithLifecycle(this)
 }

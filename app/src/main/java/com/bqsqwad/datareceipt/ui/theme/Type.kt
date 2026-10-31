@@ -2,14 +2,11 @@ package com.bqsqwad.datareceipt.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.bqsqwad.datareceipt.R
 
-// Note: Place Poppins and Inter font files in res/font/
-// Using system fallbacks until fonts are bundled.
+// System fallbacks until Poppins/Inter font files are bundled in res/font/
 val PoppinsFamily = FontFamily.SansSerif
 val InterFamily = FontFamily.SansSerif
 
