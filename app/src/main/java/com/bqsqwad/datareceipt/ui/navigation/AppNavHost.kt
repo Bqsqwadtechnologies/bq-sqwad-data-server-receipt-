@@ -27,6 +27,7 @@ import com.bqsqwad.datareceipt.ui.screens.legal.LegalType
 import com.bqsqwad.datareceipt.ui.screens.more.MoreFromScreen
 import com.bqsqwad.datareceipt.ui.screens.onboarding.OnboardingScreen
 import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
+import com.bqsqwad.datareceipt.ui.screens.settings.BundleEditorScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.CountryCurrencyScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
@@ -96,9 +97,8 @@ fun AppNavHost() {
             composable(Routes.ABOUT) { AboutScreen(navController) }
             composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) }
             composable(Routes.COUNTRY_PICKER) { CountryCurrencyScreen(navController) }
-            composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) }
+            composable(Routes.BUNDLE_EDITOR) { BundleEditorScreen(navController) }
 
-            // All 8 tools — real screens
             composable(Routes.LIVE_BUBBLE) { LiveBubbleScreen(navController) }
             composable(Routes.CALCULATOR) { CalculatorScreen(navController) }
             composable(Routes.HOTSPOT) { HotspotSplitScreen(navController) }
