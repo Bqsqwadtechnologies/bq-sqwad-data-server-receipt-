@@ -1,68 +1,72 @@
 # Privacy Policy
 
+**Application:** BQ Sqwad Data Receipt  
+**Operator:** BQ Sqwad Technologies  
 **Last updated:** 31 October 2026  
-**Operator:** BQ Sqwad Technologies
+**Privacy contact:** hello@bqsqwadai.com
 
-## Who we are
+This Privacy Policy explains how BQ Sqwad Technologies handles information in connection with BQ Sqwad Data Receipt (the “Application”).
 
-We are BQ Sqwad Technologies. We operate the BQ Sqwad Data Receipt mobile application (“the app”).
+## 1. Application and operator
 
-If you have questions about this policy or how the app handles information, contact us at **hello@bqsqwadai.com**.
+BQ Sqwad Data Receipt is provided by BQ Sqwad Technologies. The Application helps users review Android network-usage information, enter data-bundle details, estimate data costs and prepare shareable data receipts.
 
-## What the app does
+## 2. Information processed on the device
 
-BQ Sqwad Data Receipt helps you understand the cost of your mobile data. It shows how much each app is costing you in money, estimates when a data bundle may run out, and creates shareable Data Receipts. All calculations use numbers you enter and statistics that Android already keeps on the device.
+The following information is processed locally to provide Application features:
 
-## No account required
+- Android network-usage statistics, including data transferred by applications and available foreground or background usage information.
+- Installed-application names and package details, used to identify and display applications on the device.
+- Data-bundle details entered by the user, such as bundle size, price, validity and calibration values.
+- Application preferences, such as country, currency, theme and notification settings.
+- Session network counters used by the optional Live Cost Bubble to show total device data transferred during an active session.
 
-You do not need to create an account or sign in. The app works without any server-side account.
+This information is used to operate requested features and is stored in the Application's private local storage. The Application does not send this locally processed usage information or installed-app list to BQ Sqwad Technologies' servers. No Application account is required.
 
-## Information processed on your device
+## 3. Permissions and purposes
 
-The app processes the following information **only on your device**:
+- **Usage Access:** Reads Android usage statistics for data-usage estimates and related features.
+- **Installed-app visibility:** Displays applications installed on the device. The list is processed locally.
+- **Notifications:** Supports reminders and user-requested status notifications.
+- **Display over other apps:** Optional permission required only when the Live Cost Bubble is enabled.
+- **Foreground service:** Keeps an active, user-started Live Cost Bubble session running while the feature is in use.
+- **Internet and network state:** Supports advertising services and opening links selected by the user.
 
-- Network usage statistics provided by Android (how much mobile and Wi-Fi data each app has used, and whether the use was in the foreground or background).
-- The data bundle details you enter (price, size, validity period, and any calibration offset).
-- Your preferences (country, currency, theme, alert settings, and similar choices).
+The Application does not use a VPN, intercept internet traffic or inspect the contents of websites, messages or other application traffic.
 
-This information is stored in the app’s local database and preferences. It is **never uploaded** to our servers. We do not collect, store, or transmit your personal usage data to BQ Sqwad Technologies.
+## 4. Advertising and third-party services
 
-## Permissions
+The Application may display advertisements provided by Google AdMob. Google and its advertising technology providers may process information such as the advertising identifier, device information, diagnostics and ad-interaction information to deliver, measure and protect advertising services, subject to applicable Google policies and consent choices.
 
-- **Usage Access** — Required so the app can read Android’s network usage statistics and calculate costs. We only read the statistics Android already keeps. We never look at the content of your internet traffic, the websites you visit, or the data inside your apps. Before we send you to the system Usage Access screen, the app shows a clear disclosure explaining what is read and why.
-- **Notifications** — So we can alert you when data is running low, when spending spikes, or when a monthly recap is ready. You can control these in the app and in system settings.
-- **Display over other apps** (optional) — Used only if you turn on the Live Cost Bubble. The bubble shows an estimate of cost while you use data.
-- **Internet** — Used to show advertisements (Google AdMob) and to open links you choose (for example our privacy policy online, TikTok, or YouTube).
+Where required, a consent form provided through Google's User Messaging Platform is presented before relevant advertising processing. Available advertising and privacy choices can be reviewed in the Application's privacy settings.
 
-We do not use a VPN. We do not intercept, filter, or inspect the content of your traffic.
+Rewarded advertisements may unlock selected features for a stated period. Completing an advertisement does not provide cash, airtime, mobile data or a prize.
 
-## Advertising
+## 5. Information sharing
 
-The free version of the app shows advertisements provided by Google AdMob. Google may collect device information and the advertising identifier according to its own privacy policy. Where required, we show a consent form (Google User Messaging Platform) before personalized ads are requested. You can change your advertising choices in the app under Privacy & ads choices.
+BQ Sqwad Technologies does not sell locally stored network-usage statistics, installed-app lists, bundle entries or Application preferences. Information may be processed by Google AdMob and related Google services as necessary for advertising, consent management, fraud prevention and measurement. Those services operate under their own privacy terms.
 
-Rewarded ads unlock app features (for example Live Cost Bubble or premium receipt styles) for 24 hours. Watching an ad never gives cash, airtime, data, or prizes.
+Links opened at the user's request may lead to third-party websites or services. Their privacy practices are governed by their respective policies.
 
-## Optional purchases
+## 6. Storage, retention and deletion
 
-If we offer a “Remove ads” purchase, it is handled by Google Play Billing. Google’s payment terms apply.
+Locally processed Application information remains in the Application's private storage until it is cleared through an available reset function or the Application is uninstalled. Advertising-related information is handled according to the applicable third-party provider's retention practices and settings.
 
-## Clipboard and dialer
+## 7. Children's privacy
 
-The app reads the clipboard only when you tap a “Paste” button (for example to paste a carrier balance message). It opens the phone dialer only when you tap a “Check balance” button; it does not place calls and does not require the CALL_PHONE permission.
+The Application is not designed or directed to children under the age of 13. BQ Sqwad Technologies does not knowingly request personal information from children under 13.
 
-## Children
+## 8. Privacy rights and choices
 
-The app is not directed at children under 13. We do not knowingly collect personal information from children.
+Privacy rights may include access, correction, objection or deletion, depending on applicable law and the type of information involved. Device-stored Application information can be cleared through the Application's reset option or by uninstalling the Application. Advertising consent choices can be reviewed through the available privacy settings.
 
-## Your rights
+Applicable privacy requirements may include the Nigeria Data Protection Act 2023 and other data-protection laws that apply to the user.
 
-Under the Nigeria Data Protection Act 2023, the GDPR, and similar laws, you may have rights to know what information is processed about you and to request its deletion. Because all data stays on your device, you can delete it at any time by using the Reset option in the app or by uninstalling the app.
+## 9. Policy updates
 
-## Changes
+This Privacy Policy may be updated when Application features, legal requirements or data practices change. The revised date will appear at the top of the published policy.
 
-We may update this Privacy Policy. When we do, we will change the “Last updated” date. Continued use of the app after changes means you accept the updated policy.
+## 10. Contact
 
-## Contact
-
-BQ Sqwad Technologies  
-Email: hello@bqsqwadai.com
+**BQ Sqwad Technologies**  
+Privacy enquiries: **hello@bqsqwadai.com**
