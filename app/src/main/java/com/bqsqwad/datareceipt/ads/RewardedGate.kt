@@ -46,7 +46,11 @@ fun RewardedGate(
         RewardedFeature.ALL_ACCESS -> "Unlock All-Access Pass"
     }
 
-    val benefit = "Watch a short ad to unlock this feature for 24 hours."
+    val benefit = if (feature == RewardedFeature.LIVE_BUBBLE) {
+        "Watch two short ads to unlock this feature for 24 hours."
+    } else {
+        "Watch a short ad to unlock this feature for 24 hours."
+    }
 
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column(
@@ -70,7 +74,7 @@ fun RewardedGate(
                                 return@Button
                             }
                             when (feature) {
-                                RewardedFeature.LIVE_BUBBLE -> adManager.showRewardedLiveBubble(
+                                RewardedFeature.LIVE_BUBBLE -> adManager.showTwoRewardedLiveBubble(
                                     activity,
                                     onRewarded = {
                                         scope.launch {
@@ -125,7 +129,13 @@ fun RewardedGate(
                         },
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(stringResource(R.string.watch_ad))
+                        Text(
+                            if (feature == RewardedFeature.LIVE_BUBBLE) {
+                                "Watch 2 short ads"
+                            } else {
+                                stringResource(R.string.watch_ad)
+                            }
+                        )
                     }
                     TextButton(onClick = onDismiss) {
                         Text(stringResource(R.string.not_now))
