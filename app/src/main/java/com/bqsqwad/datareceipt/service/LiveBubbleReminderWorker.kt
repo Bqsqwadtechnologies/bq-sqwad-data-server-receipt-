@@ -25,6 +25,8 @@ class LiveBubbleReminderWorker(
 ) : CoroutineWorker(appContext, params) {
 
     override suspend fun doWork(): Result {
+        // End the previous six-hour live session before asking the user to renew it.
+        applicationContext.stopService(Intent(applicationContext, LiveCostBubbleService::class.java))
         createChannel()
         if (Build.VERSION.SDK_INT >= 33 &&
             applicationContext.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
