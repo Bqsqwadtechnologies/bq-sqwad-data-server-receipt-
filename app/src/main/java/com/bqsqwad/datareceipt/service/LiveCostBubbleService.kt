@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.view.Gravity
+import android.view.MotionEvent
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
@@ -75,6 +76,30 @@ class LiveCostBubbleService : Service() {
             x = 20
             y = 180
         }
+        var downRawX = 0f
+        var downRawY = 0f
+        var startX = 0
+        var startY = 0
+        view.setOnTouchListener { touched, event ->
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    downRawX = event.rawX
+                    downRawY = event.rawY
+                    startX = params.x
+                    startY = params.y
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    // With TOP|END gravity, horizontal offsets grow toward the left.
+                    params.x = (startX - (event.rawX - downRawX).toInt()).coerceAtLeast(0)
+                    params.y = (startY + (event.rawY - downRawY).toInt()).coerceAtLeast(0)
+                    runCatching { windowManager.updateViewLayout(touched, params) }
+                    true
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> true
+                else -> false
+            }
+        }
         windowManager.addView(view, params)
         bubble = view
     }
@@ -98,7 +123,7 @@ class LiveCostBubbleService : Service() {
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Live data session")
             .setContentText("Tracking total device data transferred during this session")
-            .setSmallIcon(R.drawable.ic_tile_live_cost)
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setContentIntent(openIntent)
             .addAction(0, "Stop", stopIntent)
             .setOngoing(true)
