@@ -1,7 +1,6 @@
 package com.bqsqwad.datareceipt.ui.screens.coach
 
 import android.content.Intent
-import android.provider.Settings
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,7 +22,7 @@ fun DataCoachScreen(navController: NavController) {
         "Turn off auto-play videos in social apps" to null,
         "Update apps over Wi-Fi only" to Settings.ACTION_WIRELESS_SETTINGS,
         "Review apps using background data" to Settings.ACTION_USAGE_ACCESS_SETTINGS,
-        "Enable Data Saver when on mobile data" to Settings.ACTION_DATA_SAVER_SETTINGS,
+        "Enable Data Saver when on mobile data" to "android.settings.DATA_SAVER_SETTINGS",
         "Restrict background data for heavy apps" to Settings.ACTION_APPLICATION_SETTINGS
     )
 
