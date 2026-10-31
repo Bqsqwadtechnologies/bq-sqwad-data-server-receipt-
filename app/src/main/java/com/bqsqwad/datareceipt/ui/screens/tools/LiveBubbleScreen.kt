@@ -52,13 +52,6 @@ fun LiveBubbleScreen(navController: NavController) {
     ) { /* The feature remains usable if notifications are declined. */ }
 
     fun activateBubble() {
-        if (Build.VERSION.SDK_INT >= 33 &&
-            context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
-            android.content.pm.PackageManager.PERMISSION_GRANTED
-        ) {
-            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            return
-        }
         val appOps = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
         val usageAllowed = runCatching {
             appOps.unsafeCheckOpNoThrow(
@@ -128,6 +121,15 @@ fun LiveBubbleScreen(navController: NavController) {
 
             if (isUnlocked) {
                 AssistChip(onClick = {}, label = { Text("Live Bubble access active · 6 hours") })
+                if (Build.VERSION.SDK_INT >= 33 &&
+                    context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
+                    android.content.pm.PackageManager.PERMISSION_GRANTED
+                ) {
+                    OutlinedButton(
+                        onClick = { notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) { Text("Enable six-hour reminders") }
+                }
                 Button(onClick = { activateBubble() }, modifier = Modifier.fillMaxWidth()) {
                     Text("Start Live Bubble")
                 }
