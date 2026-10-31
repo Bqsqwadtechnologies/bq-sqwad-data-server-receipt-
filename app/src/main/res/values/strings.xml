@@ -4,6 +4,7 @@
     <string name="app_name_short">Data Receipt</string>
     <string name="tagline">See what your data really costs.</string>
     <string name="company_name">BQ Sqwad Technologies</string>
+    <string name="more_from_company">More from BQ Sqwad Technologies</string>
 
     <!-- Navigation -->
     <string name="nav_home">Home</string>
@@ -21,6 +22,11 @@
     <string name="action_retry">Retry</string>
     <string name="action_grant_access">Grant access</string>
     <string name="loading">Loading…</string>
+    <string name="not_now">Not now</string>
+    <string name="watch_ad">Watch a short ad</string>
+    <string name="preparing_ad">Preparing your ad…</string>
+    <string name="unlocked_for">Unlocked for 24 hours</string>
+    <string name="no_ad_available">No ad is available right now. Please try again in a moment.</string>
 
     <!-- Onboarding -->
     <string name="onboarding_welcome_title">Welcome to Data Receipt</string>
@@ -57,8 +63,7 @@
     <string name="copyright_notices">Copyright &amp; Notices</string>
     <string name="view_online">View online</string>
 
-    <!-- More from BQ Sqwad -->
-    <string name="more_from_bq_sqwad">More from BQ Sqwad</string>
+    <!-- More from BQ Sqwad Technologies -->
     <string name="recommended">Recommended</string>
     <string name="coming_soon">Coming soon</string>
     <string name="get_on_play">Get it on Google Play</string>
@@ -71,4 +76,25 @@
     <!-- Company Plate -->
     <string name="designed_by">Designed and developed by BQ Sqwad Technologies.</string>
     <string name="all_rights_reserved">© %1$d BQ Sqwad Technologies. All rights reserved.</string>
+
+    <!-- Tools -->
+    <string name="tool_live_bubble">Live Cost Bubble</string>
+    <string name="tool_calculator">Cost Calculator</string>
+    <string name="tool_plan_finder">Best Plan Finder</string>
+    <string name="tool_budget">Budget Goal</string>
+    <string name="tool_calibrate">Calibrate</string>
+    <string name="tool_leak">Leak Detector</string>
+    <string name="tool_hotspot">Hotspot Cost</string>
+    <string name="tool_travel">Travel Mode</string>
+
+    <!-- Settings sections -->
+    <string name="settings_profile">Profile &amp; Region</string>
+    <string name="settings_bundles">My Bundles</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_alerts">Alerts</string>
+    <string name="settings_bubble">Live Cost Bubble</string>
+    <string name="settings_data">Data &amp; Backup</string>
+    <string name="settings_privacy">Privacy &amp; Ads</string>
+    <string name="settings_help">Help &amp; Support</string>
+    <string name="settings_about">About</string>
 </resources>
