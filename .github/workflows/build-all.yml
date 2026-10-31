@@ -22,9 +22,9 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK packages
+      - name: Install Android SDK packages (API 36)
         run: |
-          sdkmanager --install "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+          sdkmanager --install "platforms;android-36" "build-tools;36.0.0" "platform-tools"
           echo "ANDROID_HOME=$ANDROID_HOME"
           echo "sdk.dir=$ANDROID_HOME" > local.properties
 
@@ -50,7 +50,7 @@ jobs:
             test -s keystore.jks
             echo "Keystore decoded successfully"
           else
-            echo "No KEYSTORE_BASE64 secret found - release will use debug signing fallback"
+            echo "No KEYSTORE_BASE64 secret — release may be unsigned"
           fi
 
       - name: Build Debug APK
@@ -69,7 +69,7 @@ jobs:
             echo "Building signed release artifacts"
           else
             unset KEYSTORE_PATH
-            echo "::warning::No keystore — release may use unsigned/debug config"
+            echo "::warning::No keystore configured"
           fi
           gradle --no-daemon --stacktrace assembleRelease bundleRelease
 

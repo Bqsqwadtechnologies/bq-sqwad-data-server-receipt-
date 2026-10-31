@@ -11,17 +11,19 @@ import java.io.FileInputStream
 
 android {
     namespace = "com.bqsqwad.datareceipt"
-    compileSdk = 35
+    // Google Play (from 31 Aug 2026): new apps/updates must target API 36+
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.bqsqwad.datareceipt"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 2
-        versionName = "1.0.1"
+        targetSdk = 36
+        versionCode = 3
+        versionName = "1.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        // Production AdMob IDs come from gradle.properties; debug falls back to Google sample units
         buildConfigField("String", "ADMOB_APP_ID", "\"${project.findProperty("ADMOB_APP_ID") ?: "ca-app-pub-3940256099942544~3347511713"}\"")
         buildConfigField("String", "ADMOB_BANNER_HOME", "\"${project.findProperty("ADMOB_BANNER_HOME") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
         buildConfigField("String", "ADMOB_BANNER_APPS", "\"${project.findProperty("ADMOB_BANNER_APPS") ?: "ca-app-pub-3940256099942544/6300978111"}\"")
@@ -94,6 +96,10 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+        // Ready for 16 KB page-size devices (Play requirement path)
+        jniLibs {
+            useLegacyPackaging = false
         }
     }
 }
