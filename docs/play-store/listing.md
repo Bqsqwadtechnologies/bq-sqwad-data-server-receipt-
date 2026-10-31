@@ -1,19 +1,24 @@
-# Play Store Listing
+# Play Store Listing — BQ Sqwad Data Receipt
 
-**Title (30 chars):** BQ Sqwad Data Receipt
+**Category:** Tools
 
-**Short description (80 chars):** See what your mobile data really costs. Per-app money receipts. No account needed.
+**Short description:**
+See what your data really costs. Turn mobile data usage into clear money receipts.
 
-**Full description:**
-Most people buy data in money but only see usage in megabytes. BQ Sqwad Data Receipt turns every byte into a clear cost in your own currency.
+**Full description (draft):**
+BQ Sqwad Data Receipt shows you how much money each app is costing you in mobile data.
 
-• See which apps are quietly spending your data money
-• Predict when your current bundle will run out
-• Beautiful shareable weekly Data Receipts
-• Live Cost Bubble while you browse
-• Fully on-device — no sign-in, no server, works offline
-• Six sky-blue themes including AMOLED
+• See per-app cost in your own currency
+• Predict when your data bundle will run out
+• Create and share weekly Data Receipts
+• Spot apps that use data in the background
+• Optional Live Cost Bubble while you browse
+
+No account required. Everything stays on your device. We only read Android’s network usage statistics — never the content of your traffic.
 
 Designed and developed by BQ Sqwad Technologies.
 
-**Category:** Tools / Productivity
+**Notes for console:**
+- Do not use the word “VPN” anywhere in the listing.
+- Financial features declaration: “My app doesn’t provide any financial features.”
+- No health declarations.
