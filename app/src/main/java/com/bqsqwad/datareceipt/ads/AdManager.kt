@@ -118,6 +118,68 @@ class AdManager @Inject constructor(
         }
     }
 
+    /**
+     * Requires two completed rewarded ads before granting the Live Bubble unlock.
+     * The second ad is loaded after the first closes so it is not skipped when
+     * the preloaded ad is consumed.
+     */
+    fun showTwoRewardedLiveBubble(
+        activity: Activity,
+        onRewarded: () -> Unit,
+        onFailed: () -> Unit = {}
+    ) {
+        val firstAd = rewardedLiveBubble
+        if (firstAd == null) {
+            loadRewardedLiveBubble()
+            onFailed()
+            return
+        }
+        rewardedLiveBubble = null
+        var firstRewardEarned = false
+        firstAd.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdFailedToShowFullScreenContent(error: AdError) {
+                loadRewardedLiveBubble()
+                onFailed()
+            }
+
+            override fun onAdDismissedFullScreenContent() {
+                if (!firstRewardEarned) {
+                    loadRewardedLiveBubble()
+                    onFailed()
+                    return
+                }
+                RewardedAd.load(
+                    context,
+                    AdConfig.rewardedLiveBubble,
+                    AdRequest.Builder().build(),
+                    object : RewardedAdLoadCallback() {
+                        override fun onAdLoaded(secondAd: RewardedAd) {
+                            var secondRewardEarned = false
+                            secondAd.fullScreenContentCallback = object : FullScreenContentCallback() {
+                                override fun onAdFailedToShowFullScreenContent(error: AdError) {
+                                    loadRewardedLiveBubble()
+                                    onFailed()
+                                }
+
+                                override fun onAdDismissedFullScreenContent() {
+                                    loadRewardedLiveBubble()
+                                    if (secondRewardEarned) onRewarded() else onFailed()
+                                }
+                            }
+                            secondAd.show(activity) { secondRewardEarned = true }
+                        }
+
+                        override fun onAdFailedToLoad(error: LoadAdError) {
+                            loadRewardedLiveBubble()
+                            onFailed()
+                        }
+                    }
+                )
+            }
+        }
+        firstAd.show(activity) { firstRewardEarned = true }
+    }
+
     // ---------- Rewarded: Premium Receipt (24h) ----------
     private fun loadRewardedPremiumReceipt() {
         RewardedAd.load(
