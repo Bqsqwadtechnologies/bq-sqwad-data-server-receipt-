@@ -1,61 +1,69 @@
 # Terms and Conditions
 
+**Application:** BQ Sqwad Data Receipt  
+**Operator:** BQ Sqwad Technologies  
 **Last updated:** 31 October 2026  
-**Operator:** BQ Sqwad Technologies
+**Contact:** hello@bqsqwadai.com
 
-## Acceptance
+These Terms and Conditions govern access to and use of BQ Sqwad Data Receipt (the “Application”), provided by BQ Sqwad Technologies.
 
-By downloading or using BQ Sqwad Data Receipt you agree to these Terms. If you do not agree, do not use the app.
+## 1. Acceptance of terms
 
-## About the app
+Downloading, installing or using the Application indicates acceptance of these Terms and Conditions. Anyone who does not accept the terms should discontinue use and uninstall the Application.
 
-BQ Sqwad Data Receipt estimates the monetary cost of your mobile data usage from Android’s usage statistics and the bundle information you enter. It is a tool for understanding and managing your own data spending.
+## 2. Application features
 
-## Estimates, not carrier bills
+BQ Sqwad Data Receipt provides tools for reviewing Android network-usage statistics, entering data-bundle information, estimating data costs, viewing installed applications and creating data receipts. Optional features may include notifications and the Live Cost Bubble.
 
-The costs and predictions shown in the app are estimates. They may differ from the amounts charged by your mobile network operator. We provide a calibration feature so you can align the app’s figures with a balance reported by your carrier. We do not guarantee that the figures will match your carrier’s billing.
+## 3. Estimates and carrier information
 
-## No financial advice
+All usage, cost, balance and expiry figures are estimates based on information made available by Android and details entered by the user. Figures may differ from a mobile network operator's records because of rounding, delayed reporting, zero-rating, background activity, network adjustments or other carrier-specific factors.
 
-The app does not provide financial, investment, credit, or legal advice. Features such as Data Budget and Hotspot Split are calculators and organisers only. They do not move money and do not connect to any bank, payment system, or carrier account.
+The Application is not a carrier billing system and does not replace official account statements, airtime balances or data-bundle records. No guarantee is made that estimates will exactly match a carrier's charges or remaining balance.
 
-## No account required
+## 4. User responsibilities
 
-You can use the app without creating an account. All calculations and data stay on your device.
+Users are responsible for providing accurate bundle information, reviewing device permissions and keeping device software reasonably secure. The Application must not be used for unlawful activity, interference with another person's device or violation of third-party rights.
 
-## Advertising and optional purchases
+## 5. Permissions and device operation
 
-The free version displays advertisements. Rewarded ads may unlock certain features for 24 hours. We may offer an optional purchase to remove ads; purchases are handled by Google Play and are subject to Google’s refund policies.
+Some features require Android permissions, including Usage Access, installed-application visibility, notifications or optional display-over-other-apps access. Features that depend on a permission may not operate when that permission is declined or revoked. Android system settings control the granting and removal of these permissions.
 
-## Acceptable use
+## 6. Advertising and rewarded features
 
-You may use the app for its intended purpose. You may not reverse engineer, redistribute, or misuse the app in a way that harms other users or violates the law.
+The Application may display advertisements supplied by Google AdMob. Selected optional features may be unlocked through rewarded advertisements. The Live Cost Bubble unlock may require completion of two short rewarded advertisements, as disclosed in the unlock screen. Feature availability and unlock periods are displayed in the Application.
 
-## Intellectual property
+Rewarded advertisements do not provide cash, airtime, mobile data or prizes. Advertising availability may depend on network connectivity, region, provider inventory and eligibility.
 
-The app, its design, the name “BQ Sqwad Data Receipt”, the “BQ Sqwad” brand, and related logos are owned by BQ Sqwad Technologies. You may share the Data Receipts and recaps that the app generates for you. You may not copy or redistribute the app itself without our permission.
+## 7. Purchases and third-party services
 
-## Third-party services
+If optional purchases are offered, payment processing is handled through Google Play Billing and is subject to Google Play's applicable payment, cancellation and refund terms. Links to third-party services are provided for convenience; those services are governed by their own terms and policies.
 
-The app may contain links to our other products, our social media pages (TikTok, YouTube), and advertising services. Those services have their own terms and privacy policies.
+## 8. Intellectual property
 
-## Disclaimer
+The Application, its software, design, content, BQ Sqwad Data Receipt name, BQ Sqwad brand elements and associated logos are owned by or licensed to BQ Sqwad Technologies. No ownership rights are transferred through installation or use. User-generated data receipts may be saved and shared for personal use. Copying, modifying, redistributing or commercially exploiting the Application without permission is prohibited, except where applicable law permits otherwise.
 
-THE APP IS PROVIDED “AS IS” AND “AS AVAILABLE”. TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+## 9. Availability and changes
 
-## Limitation of liability
+Features may be updated, changed, suspended or discontinued to maintain security, improve performance or comply with legal and platform requirements. Device compatibility, network access and third-party service availability may affect operation.
 
-To the maximum extent permitted by applicable law, BQ Sqwad Technologies and its team shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of the app.
+## 10. Disclaimer
 
-## Governing law
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE APPLICATION IS PROVIDED “AS IS” AND “AS AVAILABLE”, WITHOUT WARRANTIES OR GUARANTEES, WHETHER EXPRESS, IMPLIED OR STATUTORY. The Application does not provide financial, investment, credit or legal advice.
 
-These Terms are governed by the laws of the Federal Republic of Nigeria. Any dispute shall be resolved in the courts of Nigeria.
+## 11. Limitation of liability
 
-## Changes
+To the maximum extent permitted by applicable law, BQ Sqwad Technologies shall not be liable for indirect, incidental, special, consequential or punitive loss, or for loss arising from reliance on estimated usage or cost figures, service interruptions, device settings or third-party services. Nothing in these Terms excludes liability that cannot lawfully be excluded.
 
-We may update these Terms. The updated version will be indicated by the “Last updated” date. Continued use of the app after changes means you accept the new Terms.
+## 12. Governing law
 
-## Contact
+These Terms are governed by the laws of the Federal Republic of Nigeria. Disputes are subject to the jurisdiction of the competent courts of Nigeria, subject to any mandatory consumer protections that apply.
 
-BQ Sqwad Technologies  
-Email: hello@bqsqwadai.com
+## 13. Changes to these terms
+
+Revised Terms will be published with an updated date. Continued use after publication of revised Terms constitutes acceptance to the extent permitted by applicable law.
+
+## 14. Contact
+
+**BQ Sqwad Technologies**  
+General enquiries: **hello@bqsqwadai.com**
