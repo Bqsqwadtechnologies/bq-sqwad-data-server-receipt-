@@ -32,10 +32,7 @@ import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.CountryCurrencyScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
-import com.bqsqwad.datareceipt.ui.screens.tools.CalculatorScreen
-import com.bqsqwad.datareceipt.ui.screens.tools.HotspotSplitScreen
-import com.bqsqwad.datareceipt.ui.screens.tools.LiveBubbleScreen
-import com.bqsqwad.datareceipt.ui.screens.tools.ToolsScreen
+import com.bqsqwad.datareceipt.ui.screens.tools.*
 
 sealed class Screen(val route: String, val labelRes: Int, val selectedIcon: ImageVector, val unselectedIcon: ImageVector) {
     data object Home : Screen("home", R.string.nav_home, Icons.Filled.Home, Icons.Outlined.Home)
@@ -107,9 +104,9 @@ fun AppNavHost() {
             composable(Routes.LIVE_BUBBLE) { LiveBubbleScreen(navController) }
             composable(Routes.CALCULATOR) { CalculatorScreen(navController) }
             composable(Routes.HOTSPOT) { HotspotSplitScreen(navController) }
+            composable(Routes.BUDGET) { DataBudgetScreen(navController) }
+            composable(Routes.CALIBRATE) { CalibrateScreen(navController) }
             composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
-            composable(Routes.BUDGET) { ToolsPlaceholder("Data Budget", navController) }
-            composable(Routes.CALIBRATE) { ToolsPlaceholder("Calibrate", navController) }
             composable(Routes.LEAK_DETECTOR) { ToolsPlaceholder("Leak Detector", navController) }
             composable(Routes.TRAVEL) { ToolsPlaceholder("Travel Mode", navController) }
         }
