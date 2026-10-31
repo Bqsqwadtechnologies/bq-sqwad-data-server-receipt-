@@ -17,6 +17,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bqsqwad.datareceipt.R
+import com.bqsqwad.datareceipt.ads.BannerPlacement
+import com.bqsqwad.datareceipt.ads.InlineBannerSlot
 import com.bqsqwad.datareceipt.ui.components.CompanyPlate
 import com.bqsqwad.datareceipt.ui.navigation.Routes
 
@@ -35,9 +37,7 @@ fun SettingsScreen(navController: NavController) {
             SettingsItem(Icons.Default.Public, "Country & Currency", "Nigeria · NGN") {
                 navController.navigate(Routes.COUNTRY_PICKER)
             }
-            SettingsItem(Icons.Default.Language, "Language", "English") {
-                // Language picker placeholder – will open system or in-app
-            }
+            SettingsItem(Icons.Default.Language, "Language", "English") { }
         }
 
         SettingsSection(stringResource(R.string.settings_bundles)) {
@@ -48,6 +48,9 @@ fun SettingsScreen(navController: NavController) {
                 navController.navigate(Routes.BUNDLE_EDITOR)
             }
         }
+
+        // Inline banner between sections (not beside toggles)
+        InlineBannerSlot(placement = BannerPlacement.HOME)
 
         SettingsSection(stringResource(R.string.settings_appearance)) {
             SettingsItem(Icons.Default.Palette, "Theme", "Sky Light") {
@@ -71,7 +74,7 @@ fun SettingsScreen(navController: NavController) {
             SettingsItem(Icons.Default.Apps, stringResource(R.string.more_from_company), null) {
                 navController.navigate(Routes.MORE_FROM)
             }
-            SettingsItem(Icons.Default.Info, stringResource(R.string.settings_about), "v1.0.0") {
+            SettingsItem(Icons.Default.Info, stringResource(R.string.settings_about), "v1.0.1") {
                 navController.navigate(Routes.ABOUT)
             }
             SettingsItem(Icons.Default.Help, "Help & FAQ", null) {
