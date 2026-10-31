@@ -33,6 +33,7 @@ import com.bqsqwad.datareceipt.ui.screens.settings.CountryCurrencyScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.CalculatorScreen
+import com.bqsqwad.datareceipt.ui.screens.tools.HotspotSplitScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.LiveBubbleScreen
 import com.bqsqwad.datareceipt.ui.screens.tools.ToolsScreen
 
@@ -105,11 +106,11 @@ fun AppNavHost() {
 
             composable(Routes.LIVE_BUBBLE) { LiveBubbleScreen(navController) }
             composable(Routes.CALCULATOR) { CalculatorScreen(navController) }
+            composable(Routes.HOTSPOT) { HotspotSplitScreen(navController) }
             composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
-            composable(Routes.BUDGET) { ToolsPlaceholder("Budget Goal", navController) }
+            composable(Routes.BUDGET) { ToolsPlaceholder("Data Budget", navController) }
             composable(Routes.CALIBRATE) { ToolsPlaceholder("Calibrate", navController) }
             composable(Routes.LEAK_DETECTOR) { ToolsPlaceholder("Leak Detector", navController) }
-            composable(Routes.HOTSPOT) { ToolsPlaceholder("Hotspot Cost", navController) }
             composable(Routes.TRAVEL) { ToolsPlaceholder("Travel Mode", navController) }
         }
     }

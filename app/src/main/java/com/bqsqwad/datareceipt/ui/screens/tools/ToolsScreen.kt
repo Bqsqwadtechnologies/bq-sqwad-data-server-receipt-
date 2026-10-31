@@ -14,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bqsqwad.datareceipt.R
-import com.bqsqwad.datareceipt.ads.BannerAdView
 import com.bqsqwad.datareceipt.ads.BannerPlacement
+import com.bqsqwad.datareceipt.ads.InlineBannerSlot
 import com.bqsqwad.datareceipt.ui.navigation.Routes
 
 data class ToolItem(
@@ -32,10 +32,10 @@ fun ToolsScreen(navController: NavController? = null) {
         ToolItem(R.string.tool_live_bubble, Icons.Default.BubbleChart, "Floating cost while you use data", Routes.LIVE_BUBBLE, isPremium = true),
         ToolItem(R.string.tool_calculator, Icons.Default.Calculate, "Before you download", Routes.CALCULATOR),
         ToolItem(R.string.tool_plan_finder, Icons.Default.Compare, "Compare carrier plans", Routes.PLAN_FINDER),
-        ToolItem(R.string.tool_budget, Icons.Default.Savings, "Set a monthly money limit", Routes.BUDGET),
+        ToolItem(R.string.tool_budget, Icons.Default.Savings, "Set a monthly data budget", Routes.BUDGET),
         ToolItem(R.string.tool_calibrate, Icons.Default.Tune, "Match carrier balance", Routes.CALIBRATE),
         ToolItem(R.string.tool_leak, Icons.Default.Warning, "Apps using data while screen off", Routes.LEAK_DETECTOR),
-        ToolItem(R.string.tool_hotspot, Icons.Default.WifiTethering, "Money used by sharing", Routes.HOTSPOT),
+        ToolItem(R.string.tool_hotspot, Icons.Default.WifiTethering, "Split hotspot cost (calculator)", Routes.HOTSPOT),
         ToolItem(R.string.tool_travel, Icons.Default.Flight, "Second currency for trips", Routes.TRAVEL)
     )
 
@@ -81,9 +81,7 @@ fun ToolsScreen(navController: NavController? = null) {
             }
         }
 
-        BannerAdView(
-            placement = BannerPlacement.TOOLS,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
+        // Inline banner below the grid (not between cards, not near nav)
+        InlineBannerSlot(placement = BannerPlacement.TOOLS)
     }
 }
