@@ -30,6 +30,27 @@ object AdConfig {
     val bannerReceipt: String
         get() = if (BuildConfig.DEBUG) TEST_BANNER else BuildConfig.ADMOB_BANNER_RECEIPT
 
+    val bannerSettings: String
+        get() = if (BuildConfig.DEBUG) TEST_BANNER else BuildConfig.ADMOB_BANNER_SETTINGS
+
+    val bannerDetail: String
+        get() = if (BuildConfig.DEBUG) TEST_BANNER else BuildConfig.ADMOB_BANNER_DETAIL
+
+    val nativeApps: String
+        get() = if (BuildConfig.DEBUG) TEST_BANNER else BuildConfig.ADMOB_NATIVE_APPS
+
+    val nativeReceipts: String
+        get() = if (BuildConfig.DEBUG) TEST_BANNER else BuildConfig.ADMOB_NATIVE_RECEIPTS
+
+    val rewardedInsights: String
+        get() = if (BuildConfig.DEBUG) TEST_REWARDED else BuildConfig.ADMOB_REWARDED_INSIGHTS
+
+    val rewardedPass: String
+        get() = if (BuildConfig.DEBUG) TEST_REWARDED else BuildConfig.ADMOB_REWARDED_PASS
+
+    val rewardedWrapped: String
+        get() = if (BuildConfig.DEBUG) TEST_REWARDED else BuildConfig.ADMOB_REWARDED_WRAPPED
+
     val rewardedLiveBubble: String
         get() = if (BuildConfig.DEBUG) TEST_REWARDED else BuildConfig.ADMOB_REWARDED_LIVE_BUBBLE
 
