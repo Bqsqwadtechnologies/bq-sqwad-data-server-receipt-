@@ -25,7 +25,7 @@ fun AppsScreen() {
     LaunchedEffect(context) {
         try {
             val pm = context.packageManager
-            apps = pm.getInstalledApplications(PackageManager.ApplicationInfoFlags.of(0L))
+            apps = pm.getInstalledApplications(0)
                 .map { info ->
                     InstalledApp(
                         name = pm.getApplicationLabel(info).toString(),
