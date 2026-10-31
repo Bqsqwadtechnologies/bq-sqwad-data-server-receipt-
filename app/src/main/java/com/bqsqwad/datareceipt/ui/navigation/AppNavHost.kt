@@ -1,5 +1,6 @@
 package com.bqsqwad.datareceipt.ui.navigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -9,6 +10,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -16,11 +20,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.bqsqwad.datareceipt.R
+import com.bqsqwad.datareceipt.ui.MainViewModel
 import com.bqsqwad.datareceipt.ui.screens.apps.AppsScreen
 import com.bqsqwad.datareceipt.ui.screens.home.HomeScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalScreen
 import com.bqsqwad.datareceipt.ui.screens.legal.LegalType
 import com.bqsqwad.datareceipt.ui.screens.more.MoreFromScreen
+import com.bqsqwad.datareceipt.ui.screens.onboarding.OnboardingScreen
 import com.bqsqwad.datareceipt.ui.screens.receipts.ReceiptsScreen
 import com.bqsqwad.datareceipt.ui.screens.settings.SettingsScreen
 import com.bqsqwad.datareceipt.ui.screens.theme.ThemePickerScreen
@@ -41,6 +47,10 @@ fun AppNavHost() {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    val mainViewModel: MainViewModel = hiltViewModel()
+    val onboardingDone by mainViewModel.isOnboardingDone.collectAsStateWithLifecycle()
+
+    val startDestination = if (onboardingDone) Screen.Home.route else Routes.ONBOARDING
 
     val showBottomBar = currentDestination?.route in bottomNavItems.map { it.route }
 
@@ -69,27 +79,27 @@ fun AppNavHost() {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route,
+            startDestination = startDestination,
             modifier = Modifier.padding(innerPadding)
         ) {
+            composable(Routes.ONBOARDING) { OnboardingScreen(navController) }
+
             composable(Screen.Home.route) { HomeScreen() }
             composable(Screen.Apps.route) { AppsScreen() }
             composable(Screen.Tools.route) { ToolsScreen(navController) }
             composable(Screen.Receipts.route) { ReceiptsScreen() }
             composable(Screen.Settings.route) { SettingsScreen(navController) }
 
-            // Nested destinations
             composable(Routes.THEME_PICKER) { ThemePickerScreen(navController) }
             composable(Routes.PRIVACY) { LegalScreen(LegalType.PRIVACY, navController) }
             composable(Routes.TERMS) { LegalScreen(LegalType.TERMS, navController) }
             composable(Routes.COPYRIGHT) { LegalScreen(LegalType.COPYRIGHT, navController) }
             composable(Routes.MORE_FROM) { MoreFromScreen(navController) }
-            composable(Routes.ABOUT) { LegalScreen(LegalType.COPYRIGHT, navController) } // temporary reuse
-            composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) } // temporary
-            composable(Routes.COUNTRY_PICKER) { ThemePickerScreen(navController) } // temporary placeholder
-            composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) } // temporary placeholder
+            composable(Routes.ABOUT) { LegalScreen(LegalType.COPYRIGHT, navController) }
+            composable(Routes.HELP) { LegalScreen(LegalType.PRIVACY, navController) }
+            composable(Routes.COUNTRY_PICKER) { ThemePickerScreen(navController) }
+            composable(Routes.BUNDLE_EDITOR) { ThemePickerScreen(navController) }
 
-            // Tools destinations (placeholders that prevent dead navigation)
             composable(Routes.LIVE_BUBBLE) { ToolsPlaceholder("Live Cost Bubble", navController) }
             composable(Routes.CALCULATOR) { ToolsPlaceholder("Cost Calculator", navController) }
             composable(Routes.PLAN_FINDER) { ToolsPlaceholder("Best Plan Finder", navController) }
@@ -118,7 +128,7 @@ private fun ToolsPlaceholder(title: String, navController: androidx.navigation.N
         }
     ) { padding ->
         Box(Modifier.padding(padding).padding(24.dp)) {
-            Text("$title screen is connected. Full implementation continues in next phases.")
+            Text("$title is connected. Full feature implementation continues.")
         }
     }
 }
