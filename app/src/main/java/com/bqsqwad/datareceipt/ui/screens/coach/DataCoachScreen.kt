@@ -1,6 +1,7 @@
 package com.bqsqwad.datareceipt.ui.screens.coach
 
 import android.content.Intent
+import android.provider.Settings
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
