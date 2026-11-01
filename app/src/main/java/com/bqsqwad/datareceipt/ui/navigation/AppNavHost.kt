@@ -75,10 +75,22 @@ fun AppNavHost(openLiveBubblePrompt: Boolean = false) {
                             label = { Text(stringResource(screen.labelRes)) },
                             selected = selected,
                             onClick = {
-                                navController.navigate(screen.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
+                                val targetRoute = screen.route
+                                val currentRoute = navController.currentDestination?.route
+                                if (currentRoute != targetRoute) {
+                                    // Return to an existing tab entry when possible. This avoids
+                                    // stacking duplicate tab destinations and keeps repeat taps reliable.
+                                    val returnedToExistingTab =
+                                        navController.popBackStack(targetRoute, inclusive = false)
+                                    if (!returnedToExistingTab) {
+                                        navController.navigate(targetRoute) {
+                                            popUpTo(navController.graph.findStartDestination().id) {
+                                                saveState = true
+                                            }
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
+                                    }
                                 }
                             }
                         )
